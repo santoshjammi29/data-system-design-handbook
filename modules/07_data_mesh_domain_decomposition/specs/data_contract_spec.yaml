@@ -1,0 +1,23 @@
+# Enterprise Data Product Contract Specification
+contract_version: "2.1.0"
+domain: "ecommerce_fulfillment"
+dataset_name: "fct_order_shipments"
+owner:
+  team: "logistics-engineering"
+  slack: "#logistics-data"
+  tier: "tier_1_mission_critical"
+
+service_level_objectives:
+  freshness_sla_minutes: 30
+  availability_percent: 99.95
+  max_allowed_null_percentage_pk: 0.0
+
+schema:
+  - name: shipment_id
+    type: string
+    primary_key: true
+  - name: order_id
+    type: string
+    foreign_key: "ecommerce_orders.fct_orders.order_id"
+  - name: shipped_at_utc
+    type: timestamp

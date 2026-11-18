@@ -62,6 +62,23 @@ python scripts/run_tests.py
 
 ---
 
+## 📦 Production Curriculum Modules
+
+| Module | Title & Focus | Key Deliverables & Code |
+| :---: | :--- | :--- |
+| **01** | **[Enterprise Lakehouse & Medallion Design](modules/01_lakehouse_and_medallion_architecture/README.md)** | Bronze raw append, Silver conformed deduplicated, Gold dimensional marts, ACID transaction log design |
+| **02** | **[Table Format Matrix (Delta vs Iceberg vs Hudi)](modules/02_table_format_tradeoff_matrix/README.md)** | Metadata tree structures, CoW vs RoW/MoR, deletion vectors, catalog independence benchmarks |
+| **03** | **[Open Metadata Catalogs & Multi-Engine Access](modules/03_metadata_catalogs_and_federation/README.md)** | Iceberg REST catalog OpenAPI, Unity Catalog, Project Nessie Git-for-data, credential vending |
+| **04** | **[Storage Layout Optimization & Clustering](modules/04_storage_optimization_and_clustering/README.md)** | Bin-packing, Z-Order curves, Liquid Clustering, Deletion Vectors, VACUUM safety windows |
+| **05** | **[High-Throughput Batch Topologies & CDF](modules/05_high_throughput_batch_and_cdf/README.md)** | Change Data Feed (CDF), incremental downstream processing, watermark-driven batch backfills |
+| **06** | **[Sub-Minute Streaming Lakehouse Ingestion](modules/06_realtime_event_driven_lakehouse/README.md)** | Latency vs cost curves, micro-batch vs continuous ingestion, automated small-file compaction |
+| **07** | **[Data Mesh Architecture & Data Contracts](modules/07_data_mesh_domain_decomposition/README.md)** | Domain ownership, data products, self-serve infrastructure, declarative contract specification |
+| **08** | **[Zero-Trust Security, ABAC & Column Masking](modules/08_zero_trust_security_and_governance/README.md)** | NIST SP 800-207 Zero Trust, dynamic column masking, row-level filters, end-to-end lineage |
+| **09** | **[Multi-Region Disaster Recovery (RTO < 1h, RPO < 15m)](modules/09_multicloud_and_disaster_recovery/README.md)** | Active-active vs warm standby, cross-region object replication, split-brain avoidance leases |
+| **10** | **[FinOps & Big Data Cost Optimization](modules/10_finops_and_cost_optimization/README.md)** | Cost attribution tagging, auto-termination policies, spot fleet bidding, storage lifecycle tiering |
+
+---
+
 ## 🏛️ Architectural Deep Dives
 
 Four production-tested architectural specifications located under `architectures/`:
