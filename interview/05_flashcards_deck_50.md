@@ -1,356 +1,356 @@
-# 🗂️ The Data Engineering & Lakehouse System Design Handbook — Technical Flashcard Deck (50 Active Recall Questions)
+# 🗂️ The Data System Design & Lakehouse Architecture Handbook — Technical Flashcard Deck (50 Active Recall Questions)
 
-> **Domain**: Data Systems Design & Enterprise Architecture
-> **Format**: 50 Rapid-Fire Questions & Answers for Technical Mastery
-
----
-
-### 1. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #1?
-
-**Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+> **Coverage**: Modules 01 through 10 of The Data System Design Handbook
+> **Focus**: 50 Rapid-Fire Questions & Answers for Lakehouse Storage, Open Table Formats, Distributed Systems, and Architecture
 
 ---
 
-### 2. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #2?
+### 1. What is a Modern Data Lakehouse?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+An architecture that combines the flexibility and cost-effectiveness of cloud data lakes with the ACID transactions and governance of data warehouses.
 
 ---
 
-### 3. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #3?
+### 2. What is Apache Parquet and why is it columnar?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+Open-source columnar file format designed for efficient data storage and retrieval, organizing data by column to optimize read query I/O.
 
 ---
 
-### 4. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #4?
+### 3. What is a Row Group in Parquet?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+A logical horizontal partitioning of data into rows, containing column chunks for each column in the table (typically 128MB - 512MB).
 
 ---
 
-### 5. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #5?
+### 4. What is dictionary encoding in Parquet?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+Replaces repetitive string values with small integer keys, drastically reducing storage size and accelerating filter operations.
 
 ---
 
-### 6. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #6?
+### 5. Difference between Snappy, GZIP, and ZSTD compression codecs?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+Snappy prioritizes decompression speed; GZIP prioritizes compression ratio; ZSTD provides the best combination of high compression and fast decode.
 
 ---
 
-### 7. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #7?
+### 6. What is the Medallion Architecture (Bronze, Silver, Gold)?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+Data design pattern where data is progressively refined: Bronze (raw append-only), Silver (cleansed/deduplicated), Gold (aggregated business marts).
 
 ---
 
-### 8. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #8?
+### 7. What is an Open Table Format?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+A metadata specification (Delta Lake, Apache Iceberg, Apache Hudi) that brings ACID transactions and snapshot isolation to raw files on cloud storage.
 
 ---
 
-### 9. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #9?
+### 8. How does the Delta Lake transaction log work?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+Stores ordered JSON commit files (`000000.json`) under `_delta_log/`, periodically compacted into Parquet checkpoint files every 10 commits.
 
 ---
 
-### 10. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #10?
+### 9. How does Apache Iceberg metadata tree work?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+Hierarchical tree: Catalog points to current Snapshot metadata file, which points to Manifest List, which points to Manifest Files, which point to Data Files.
 
 ---
 
-### 11. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #11?
+### 10. Difference between Delta Lake and Apache Iceberg metadata layout?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+Delta uses an append-only linear JSON commit log with checkpoint files; Iceberg uses a tree of immutable Avro manifest snapshots.
 
 ---
 
-### 12. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #12?
+### 11. What is Apache Hudi and what are its two storage types?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+Table format with Copy-on-Write (CoW, rewrites Parquet on write) and Merge-on-Read (MoR, writes delta Avro files and merges at read time).
 
 ---
 
-### 13. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #13?
+### 12. What are Deletion Vectors in Delta Lake and Iceberg?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+Roaring bitmaps that track deleted rows within existing Parquet files without rewriting the entire data file (eliminating Copy-on-Write amplification).
 
 ---
 
-### 14. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #14?
+### 13. What is Optimistic Concurrency Control (OCC)?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+Concurrency protocol where transactions execute without locking, checking for conflicts only at commit time and failing/retrying if conflicts exist.
 
 ---
 
-### 15. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #15?
+### 14. What constitutes a write-write conflict in Delta Lake?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+Two concurrent transactions attempting to modify or delete the same files or overlapping partition slices simultaneously.
 
 ---
 
-### 16. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #16?
+### 15. What is Liquid Clustering in Delta Lake?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+Dynamic clustering algorithm that replaces rigid Hive partitioning and Z-Order, automatically clustering data along multiple columns incrementally.
 
 ---
 
-### 17. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #17?
+### 16. Why does Hive-style partitioning (e.g. `/year/month/day/hour`) fail at scale?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+Leads to the small-file problem (millions of tiny files) and massive metadata directory traversal bottlenecks on cloud object storage.
 
 ---
 
-### 18. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #18?
+### 17. What is Z-Ordering and how does it multidimensionally cluster data?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+Interleaves the bits of multiple column values along a Space-Filling Peano-Hilbert curve to preserve spatial locality across multiple columns.
 
 ---
 
-### 19. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #19?
+### 18. What is the Small File Problem in data lakes?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+Excessive tiny files (<10MB) creating enormous metadata overhead, slow directory listings, and severe object storage GET/LIST API latency.
 
 ---
 
-### 20. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #20?
+### 19. What does `OPTIMIZE` / Bin-Packing do?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+Compacts many small files into uniform large files (typically 1GB target size) to optimize query read performance.
 
 ---
 
-### 21. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #21?
+### 20. What does `VACUUM` do in Delta Lake / Iceberg?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+Permanently removes historical data files that have been deleted or superseded and fall outside the retention threshold (e.g. 7 days).
 
 ---
 
-### 22. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #22?
+### 21. What happens if you run `VACUUM` with retention set to zero hours?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+Active concurrent readers reading previous snapshots will experience crash failures (`FileNotFoundException`), and time travel is destroyed.
 
 ---
 
-### 23. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #23?
+### 22. What is Time Travel in lakehouse engines?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+Querying historical table snapshots using `VERSION AS OF` or `TIMESTAMP AS OF` by replaying the metadata state at that point in time.
 
 ---
 
-### 24. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #24?
+### 23. What is Apache Iceberg Hidden Partitioning?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+Partition transforms (e.g. `day(ts)`, `bucket(16, id)`) are tracked automatically by the engine without users having to explicitly query partition columns.
 
 ---
 
-### 25. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #25?
+### 24. What is an Iceberg REST Catalog?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+Standardized HTTP API specification allowing multi-engine compute (Spark, Trino, Snowflake, Flink) to securely access and mutate Iceberg metadata.
 
 ---
 
-### 26. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #26?
+### 25. What is Unity Catalog in Databricks?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+Universal governance and metadata catalog providing a 3-level namespace (`catalog.schema.table`), unified ACLs, and automated data lineage.
 
 ---
 
-### 27. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #27?
+### 26. What is the PACELC theorem?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+In a partitioned system (P), choose between Availability (A) and Consistency (C); else (E), choose between Latency (L) and Consistency (C).
 
 ---
 
-### 28. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #28?
+### 27. What is the CAP theorem?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+A distributed system can guarantee at most two out of Consistency, Availability, and Partition Tolerance simultaneously.
 
 ---
 
-### 29. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #29?
+### 28. What is Raft consensus and how does it ensure consistency?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+Leader-based consensus protocol where state changes are replicated to a majority quorum before being committed to the distributed log.
 
 ---
 
-### 30. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #30?
+### 29. What is a Split-Brain scenario in distributed systems?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+When network partition divides a cluster into two disconnected groups that both believe they are the leader, causing data divergence and corruption.
 
 ---
 
-### 31. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #31?
+### 30. How do quorums prevent split-brain?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+Requires strict majority vote (`N/2 + 1`); two disjoint partitions cannot both achieve a strict majority simultaneously.
 
 ---
 
-### 32. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #32?
+### 31. What is Enterprise Data Mesh?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+Decentralized sociotechnical data architecture treating data as a product, organized around domain-driven autonomous teams with federated governance.
 
 ---
 
-### 33. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #33?
+### 32. What are the 4 core principles of Data Mesh?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+Domain ownership, Data as a product, Self-serve data infrastructure platform, and Federated computational governance.
 
 ---
 
-### 34. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #34?
+### 33. What is a Data Product in Data Mesh?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+An autonomous, discoverable, trustworthy, and secure node on the mesh encapsulating code, data, metadata, infrastructure, and SLAs.
 
 ---
 
-### 35. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #35?
+### 34. What is a Data Contract and what are its key components?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+Contract between producer and consumer specifying Schema, Semantics, SLA (freshness, availability), and Quality constraints.
 
 ---
 
-### 36. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #36?
+### 35. Difference between Data Mesh and Data Fabric?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+Data Mesh is an organizational/architectural decentralization paradigm; Data Fabric is an automated technology-driven integration layer.
 
 ---
 
-### 37. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #37?
+### 36. What is disaster recovery RPO (Recovery Point Objective)?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+The maximum acceptable amount of data loss measured in time (e.g. 15 minutes of lost data) following an unplanned outage.
 
 ---
 
-### 38. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #38?
+### 37. What is disaster recovery RTO (Recovery Time Objective)?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+The maximum acceptable amount of downtime required to restore normal system operations following an outage.
 
 ---
 
-### 39. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #39?
+### 38. Difference between Active-Passive and Active-Active lakehouse replication?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+Active-Passive replicates to a standby DR region with failover lag; Active-Active serves reads and writes across multiple regions simultaneously.
 
 ---
 
-### 40. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #40?
+### 39. How do cloud object storage eventual consistency models impact lakehouses?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+Historically, eventual consistency caused stale reads; modern S3/ADLS Gen2 offer strong read-after-write consistency for PUTs and DELETEs.
 
 ---
 
-### 41. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #41?
+### 40. What is Object Immutability and WORM (Write Once, Read Many) in cloud storage?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+Retention policy (e.g. S3 Object Lock) that mathematically prevents files from being modified or deleted for a mandatory compliance duration.
 
 ---
 
-### 42. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #42?
+### 41. How does partition pruning work in columnar query engines?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+Reads metadata partition values to entirely skip scanning directories that do not match the query predicate.
 
 ---
 
-### 43. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #43?
+### 42. How does file-level data skipping work (Min/Max statistics)?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+Column statistics stored in metadata allow the engine to skip scanning entire Parquet files whose `min_val` and `max_val` do not overlap the predicate.
 
 ---
 
-### 44. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #44?
+### 43. What is Bloom Filter indexing in modern lakehouses?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+Probabilistic data structure that rapidly tests whether an element is definitely NOT in a file, eliminating unnecessary file reads for high-cardinality keys.
 
 ---
 
-### 45. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #45?
+### 44. What is the difference between Logical Plan and Physical Plan in query execution?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+Logical plan represents relational algebra transformations abstractly; physical plan dictates exact execution algorithms (e.g. Hash Join vs SortMerge Join).
 
 ---
 
-### 46. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #46?
+### 45. What is Catalyst Optimizer in Apache Spark?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+Extensible query optimizer that performs analysis, logical optimization, physical planning, and code generation for Spark SQL and DataFrames.
 
 ---
 
-### 47. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #47?
+### 46. What is Adaptive Query Execution (AQE)?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+Re-optimizes physical query plans at runtime based on accurate stage runtime statistics (coalescing shuffle partitions, switching to broadcast joins).
 
 ---
 
-### 48. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #48?
+### 47. What is data skew in distributed processing?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+Uneven distribution of data across partitions, causing a few straggler tasks to process orders of magnitude more data than others.
 
 ---
 
-### 49. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #49?
+### 48. How does two-phase key salting resolve severe join skew?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+Appends random salt (0..N-1) to skewed keys in table A and replicates rows in table B across all salt values, distributing the hot key evenly.
 
 ---
 
-### 50. What is the primary operational consideration for Data Systems Design & Enterprise Architecture concept #50?
+### 49. What is Shuffle Spill in Apache Spark and how do you diagnose it?
 
 **Answer:**  
-Enforce deterministic execution, bounded resource allocation, idempotent state commits, and active monitoring of consumer latency.
+Occurs when memory execution buffers exceed executor RAM, forcing data to spill to local disk; diagnosed via Spark UI `Spill (Memory)` and `Spill (Disk)`.
+
+---
+
+### 50. What is the golden architectural rule for lakehouse file sizing?
+
+**Answer:**  
+Target Parquet file sizes between 128MB and 512MB: large enough to maximize columnar compression and I/O throughput, small enough for nimble tasks.
 
 ---

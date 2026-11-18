@@ -1,5 +1,11 @@
 # Module 02: Open Table Format Tradeoff Matrix (Delta vs Iceberg vs Hudi)
 
+
+![Open Table Formats Blueprint: Lakehouse Storage Engines](../../assets/whiteboards/open_table_formats_lakehouse_architecture.webp)
+> *Architectural Blueprint: [Open Table Formats Blueprint: Lakehouse Storage Engines](../../docs/whiteboard_diagrams/README.md#open-table-formats-lakehouse). View full multi-persona breakdown and engine mechanisms in the master index.*
+
+
+
 ## 1. Architectural Comparison Matrix
 | Architectural Dimension | Delta Lake 3.x | Apache Iceberg v2/v3 | Apache Hudi |
 | :--- | :--- | :--- | :--- |

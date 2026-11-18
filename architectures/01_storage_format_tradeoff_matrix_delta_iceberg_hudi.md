@@ -1,5 +1,23 @@
 # 🏛️ Architecture: Open Table Format Architecture: Delta vs. Iceberg vs. Hudi
 
+
+![Open Table Formats Blueprint: Lakehouse Storage Engines](../assets/whiteboards/open_table_formats_lakehouse_architecture.webp)
+> *Architectural Blueprint: [Open Table Formats Blueprint: Lakehouse Storage Engines](../docs/whiteboard_diagrams/README.md#open-table-formats-lakehouse). View full multi-persona breakdown and engine mechanisms in the master index.*
+
+
+![How Delta Lake Works Under the Hood](../assets/whiteboards/delta_lake_mechanism.webp)
+> *Architectural Blueprint: [How Delta Lake Works Under the Hood](../docs/whiteboard_diagrams/README.md#delta-lake-under-the-hood). View full multi-persona breakdown and engine mechanisms in the master index.*
+
+
+![Apache Iceberg Open Table Format Mechanics](../assets/whiteboards/apache_iceberg_open_table_format.webp)
+> *Architectural Blueprint: [Apache Iceberg Open Table Format Mechanics](../docs/whiteboard_diagrams/README.md#apache-iceberg-open-table-format). View full multi-persona breakdown and engine mechanisms in the master index.*
+
+
+![Delta Lake vs. Apache Iceberg Storage & Metadata Architecture](../assets/whiteboards/delta_lake_vs_iceberg_architecture.webp)
+> *Architectural Blueprint: [Delta Lake vs. Apache Iceberg Storage & Metadata Architecture](../docs/whiteboard_diagrams/README.md#delta-vs-iceberg-architecture). View full multi-persona breakdown and engine mechanisms in the master index.*
+
+
+
 > **Domain**: Data Systems Design & Enterprise Architecture  
 > **Target Audience**: Senior Engineers, Data Architects, Platform Leads  
 > **Overview**: Metadata trees, commit protocols, deletion vectors, and catalog independence.

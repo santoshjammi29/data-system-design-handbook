@@ -38,11 +38,80 @@ flowchart LR
 
 ---
 
-## 🖼️ Whiteboard Blueprints
+## 🖼️ Master Whiteboard Architecture Blueprints
 
-The repository includes **52 publication-grade architectural whiteboard blueprints** mirrored under `assets/whiteboards/` and cataloged in [docs/whiteboard_diagrams/README.md](docs/whiteboard_diagrams/README.md).
+The repository includes **52 publication-grade architectural whiteboard blueprints** mirrored under [`assets/whiteboards/`](assets/whiteboards) and cataloged with comprehensive multi-persona breakdowns, failure modes, and engine internals in [`docs/whiteboard_diagrams/README.md`](docs/whiteboard_diagrams/README.md).
 
----
+### 📐 Visual Blueprints Showcase
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="docs/whiteboard_diagrams/README.md#open-table-formats-lakehouse">
+        <img src="assets/whiteboards/open_table_formats_lakehouse_architecture.webp" alt="Open Table Formats Blueprint: Lakehouse Storage Engines" width="100%" />
+      </a>
+      <br><strong>Open Table Formats Blueprint: Lakehouse Storage Engines</strong><br>
+      <em>Comparative architecture of Delta Lake, Apache Iceberg, and Apache Hudi storage layers.</em>
+    </td>
+    <td width="50%" valign="top">
+      <a href="docs/whiteboard_diagrams/README.md#delta-lake-under-the-hood">
+        <img src="assets/whiteboards/delta_lake_mechanism.webp" alt="How Delta Lake Works Under the Hood" width="100%" />
+      </a>
+      <br><strong>How Delta Lake Works Under the Hood</strong><br>
+      <em>Append-only JSON commit log, snapshot isolation, checkpoints, and time travel mechanisms.</em>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="docs/whiteboard_diagrams/README.md#apache-iceberg-open-table-format">
+        <img src="assets/whiteboards/apache_iceberg_open_table_format.webp" alt="Apache Iceberg Open Table Format Mechanics" width="100%" />
+      </a>
+      <br><strong>Apache Iceberg Open Table Format Mechanics</strong><br>
+      <em>Snapshot trees, manifest lists, manifest files, and hidden partitioning.</em>
+    </td>
+    <td width="50%" valign="top">
+      <a href="docs/whiteboard_diagrams/README.md#delta-vs-iceberg-architecture">
+        <img src="assets/whiteboards/delta_lake_vs_iceberg_architecture.webp" alt="Delta Lake vs. Apache Iceberg Storage & Metadata Architecture" width="100%" />
+      </a>
+      <br><strong>Delta Lake vs. Apache Iceberg Storage & Metadata Architecture</strong><br>
+      <em>Linear commit log vs hierarchical tree metadata, concurrency, and delete mechanics.</em>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="docs/whiteboard_diagrams/README.md#lakehouse-acid-concurrency">
+        <img src="assets/whiteboards/lakehouse_acid_concurrency.webp" alt="Lakehouse ACID Concurrency & Write Conflict Resolution Matrix" width="100%" />
+      </a>
+      <br><strong>Lakehouse ACID Concurrency & Write Conflict Resolution Matrix</strong><br>
+      <em>Optimistic concurrency control, commit conflict detection, and write serialization.</em>
+    </td>
+    <td width="50%" valign="top">
+      <a href="docs/whiteboard_diagrams/README.md#data-mesh-enterprise-architecture">
+        <img src="assets/whiteboards/data_mesh_enterprise_architecture.webp" alt="Enterprise Data Mesh: Decentralized Domains & Data Products" width="100%" />
+      </a>
+      <br><strong>Enterprise Data Mesh: Decentralized Domains & Data Products</strong><br>
+      <em>Decentralized domain ownership, self-serve data infrastructure, and federated governance.</em>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="docs/whiteboard_diagrams/README.md#lakehouse-bcdr-failover">
+        <img src="assets/whiteboards/lakehouse_bcdr_failover_architecture.webp" alt="Lakehouse Disaster Recovery (BCDR) Cross-Region Failover & Split-Brain Prevention" width="100%" />
+      </a>
+      <br><strong>Lakehouse Disaster Recovery (BCDR) Cross-Region Failover & Split-Brain Prevention</strong><br>
+      <em>Active-passive storage replication, DNS failover routing, and split-brain prevention.</em>
+    </td>
+    <td width="50%" valign="top">
+      <a href="docs/whiteboard_diagrams/README.md#lakehouse-access-masking-lifecycle">
+        <img src="assets/whiteboards/lakehouse_access_masking_lifecycle_architecture.webp" alt="Lakehouse Fine-Grained Access Control, Dynamic Masking & Entra/ABAC Enforcement" width="100%" />
+      </a>
+      <br><strong>Lakehouse Fine-Grained Access Control, Dynamic Masking & Entra/ABAC Enforcement</strong><br>
+      <em>Row-level security, column-level masking, and attribute-based access control.</em>
+    </td>
+  </tr>
+</table>
+
+> 🔍 **Explore all 52 blueprints with 5-persona breakdowns, failure modes, and engine internals in [docs/whiteboard_diagrams/README.md](docs/whiteboard_diagrams/README.md)**.
 
 ## 💻 Interactive CLI Explorer
 

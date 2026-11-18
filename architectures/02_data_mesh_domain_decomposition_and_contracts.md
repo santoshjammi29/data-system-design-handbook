@@ -1,5 +1,15 @@
 # 🏛️ Architecture: Data Mesh Domain Decomposition & Data Product Contracts
 
+
+![Enterprise Data Mesh: Decentralized Domains & Data Products](../assets/whiteboards/data_mesh_enterprise_architecture.webp)
+> *Architectural Blueprint: [Enterprise Data Mesh: Decentralized Domains & Data Products](../docs/whiteboard_diagrams/README.md#data-mesh-enterprise-architecture). View full multi-persona breakdown and engine mechanisms in the master index.*
+
+
+![Kimball Dimensional Modeling & Enterprise Star Schema](../assets/whiteboards/kimball_dimensional_star_schema.webp)
+> *Architectural Blueprint: [Kimball Dimensional Modeling & Enterprise Star Schema](../docs/whiteboard_diagrams/README.md#kimball-dimensional-star-schema). View full multi-persona breakdown and engine mechanisms in the master index.*
+
+
+
 > **Domain**: Data Systems Design & Enterprise Architecture  
 > **Target Audience**: Senior Engineers, Data Architects, Platform Leads  
 > **Overview**: Bounded contexts, federated computational governance, and zero-trust data sharing.

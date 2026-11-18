@@ -1,5 +1,15 @@
 # 🏛️ Architecture: Zero-Trust Lakehouse Security & Data Perimeter Architecture
 
+
+![Lakehouse Fine-Grained Access Control, Dynamic Masking & Entra/ABAC Enforcement](../assets/whiteboards/lakehouse_access_masking_lifecycle_architecture.webp)
+> *Architectural Blueprint: [Lakehouse Fine-Grained Access Control, Dynamic Masking & Entra/ABAC Enforcement](../docs/whiteboard_diagrams/README.md#lakehouse-access-masking-lifecycle). View full multi-persona breakdown and engine mechanisms in the master index.*
+
+
+![Unity Catalog Unified Governance & 3-Level Namespace](../assets/whiteboards/unity_catalog_architecture.webp)
+> *Architectural Blueprint: [Unity Catalog Unified Governance & 3-Level Namespace](../docs/whiteboard_diagrams/README.md#unity-catalog-governance). View full multi-persona breakdown and engine mechanisms in the master index.*
+
+
+
 > **Domain**: Data Systems Design & Enterprise Architecture  
 > **Target Audience**: Senior Engineers, Data Architects, Platform Leads  
 > **Overview**: Attribute-Based Access Control (ABAC), dynamic column masking, and clean room enclaves.
