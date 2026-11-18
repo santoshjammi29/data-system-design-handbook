@@ -897,3 +897,86 @@ DEEP CLONE primary_lake.sales.orders;
 **Certification Alignment:** `Enterprise Data Architect / AWS & Azure Solutions Architect Professional`
 
 ---
+
+---
+
+### System Design: Enterprise GenAI & RAG Platform on Lakehouse (Mosaic AI Architecture)
+
+#### 1. Functional & Non-Functional Requirements
+- **Functional**:
+  - Ingest 50M enterprise documents (PDFs, Confluence, Jira, ServiceNow) across 20 global business domains.
+  - Sub-second hybrid retrieval (dense vector embeddings + sparse keyword search).
+  - Multi-turn AI Agent capable of tool-calling enterprise SQL databases and returning verifiable source citations.
+  - Multi-tenant data isolation with strict role-based and attribute-based access control (ABAC).
+- **Non-Functional**:
+  - P95 query latency $< 800\text{ms}$ under 500 concurrent users.
+  - Zero PII leakage across enterprise boundaries.
+  - High availability ($99.95\%$) with scale-to-zero serverless compute during off-peak hours.
+
+#### 2. End-to-End Architectural Blueprint
+```
+[Unstructured Data Sources] (PDF, Docs, Tickets)
+                │
+                ▼
+[Auto Loader Streaming Ingestion] ──▶ [Bronze Delta Table]
+                │
+                ▼
+[Semantic Text Chunking & Normalization] ──▶ [Silver Delta Table] (CDF Enabled)
+                │
+                ▼
+[Mosaic AI Vector Search Delta Sync] ──▶ [Managed Vector Search Endpoint] (HNSW)
+                │                                    │
+                │                                    ▼
+                │                  [Unified Governance: Unity Catalog]
+                │                   (ABAC Tags, Row Filters, Column Masks)
+                │                                    │
+                ▼                                    ▼
+     [Mosaic AI Gateway] ◀── [Databricks Model Serving] (Llama 3 / DBRX)
+     (PII Masking & Rate Limits)                     │
+                ▲                                    ▼
+                │                  [Mosaic AI Agent Framework]
+                │                   (Tool Calling against DBSQL)
+                │                                    │
+                ▼                                    ▼
+[Enterprise Chat App / Slack] ◀─── [MLflow 3.x Agent Evaluation & Review App]
+```
+
+#### 3. Deep Architectural Tradeoff: Managed Mosaic AI vs Dedicated Vector DBs
+
+| Decision Criteria | Managed Mosaic AI Vector Search | Dedicated Vector DB (Pinecone, Milvus, Qdrant) |
+| :--- | :--- | :--- |
+| **Data Synchronization** | **Native Delta Sync**: Reads Delta Change Data Feed directly. No ETL code needed to sync updates/deletes. | **Custom Sync Pipelines**: Requires writing Kafka/Flink/Airflow pipelines to mirror CRUD events into vector database. |
+| **Security & Governance** | **Single Pane of Glass**: Inherits Unity Catalog row filters, column masks, and tags. Zero data copies outside compliance ring. | **Fragmented Governance**: Vector DB maintains independent API keys and access lists; ACL sync lag is a constant vulnerability. |
+| **Embedding Generation** | **Managed Embeddings**: Endpoints automatically compute vectors via Foundation Model APIs during ingestion. | **Client-Side Embeddings**: Client must compute embeddings and manage vector dimensions prior to insertion. |
+| **Hybrid SQL Joins** | **In-Engine `vector_search()`**: Join vector similarity scores with relational dimension tables in a single SQL query plan. | **Two-Phase Architecture**: App must query vector DB first, extract IDs, and send secondary `WHERE id IN (...)` query to data warehouse. |
+
+#### 4. Production Code: Deploying Governed Agent with Vector Search
+```python
+# Production Agent Definition using MLflow and Vector Search
+import mlflow
+from databricks.vector_search.client import VectorSearchClient
+
+class EnterpriseRAGAgent(mlflow.pyfunc.PythonModel):
+    def load_context(self, context):
+        self.vsc = VectorSearchClient()
+        self.index = self.vsc.get_index(
+            endpoint_name="prod_vector_search_endpoint",
+            index_name="prod_catalog.ai_schema.enterprise_docs_idx"
+        )
+    
+    def predict(self, context, model_input):
+        question = model_input["query"].iloc[0]
+        # Retrieve context from Vector Search index
+        results = self.index.similarity_search(
+            query_text=question,
+            columns=["chunk_content", "source_url"],
+            num_results=3
+        )
+        chunks = [row[0] for row in results["result"]["data_array"]]
+        prompt = f"Answer using only these sources: {chunks}\nQuestion: {question}"
+        # Execute guarded query via Foundation Model API
+        return mlflow.deployments.get_deploy_client("databricks").predict(
+            endpoint="databricks-meta-llama-3-70b-instruct",
+            inputs={"messages": [{"role": "user", "content": prompt}]}
+        )
+```

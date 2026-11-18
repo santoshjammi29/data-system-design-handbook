@@ -65,3 +65,43 @@ In production systems, this incident typically originates from sudden traffic su
 - [ ] Pipeline metrics return to baseline with 0 active error alerts.
 - [ ] Processing latency conforms to standard production SLAs.
 - [ ] Postmortem root cause documented and shared with architecture leads.
+
+
+---
+
+## 5. Mosaic AI Gateway Token Hijack & Prompt Exfiltration Triage
+
+### 5.1 Incident Symptoms & Root Cause
+- **Symptoms**: AI Gateway billing spikes dramatically ($10\times$ in 1 hour), or security audit logs alert on prompt injection attempts attempting to dump internal database connection strings.
+- **Root Cause**: Compromised API tokens or malicious external user prompts bypassing naive application-level prompt sanitization.
+
+### 5.2 Emergency Quarantine & AI Gateway Hardening
+1. **Immediate Revocation of Gateway Route Credentials**:
+```bash
+# Rotate downstream foundation model keys immediately
+databricks secrets put-secret --json '{
+  "scope": "genai_secrets",
+  "key": "external_llm_key",
+  "string_value": "NEW_ROTATED_CREDENTIAL_VALUE"
+}'
+```
+
+2. **Enable In-Line PII Redaction and Toxicity Blocking**:
+```python
+# Hardening AI Gateway guardrails via Python SDK
+import mlflow.deployments
+
+client = mlflow.deployments.get_deploy_client("databricks")
+client.update_endpoint(
+    endpoint="enterprise-genai-gateway",
+    config={
+        "ai_gateway": {
+            "guardrails": {
+                "input": {"pii": {"behavior": "mask"}},
+                "output": {"toxicity": {"behavior": "block"}}
+            }
+        },
+        "rate_limits": [{"calls": 20, "key": "user", "renewal_period": "minute"}]
+    }
+)
+```
