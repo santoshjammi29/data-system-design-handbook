@@ -93,3 +93,55 @@ assert pipeline_config["checkpoint_interval_seconds"] > 0
 - Monitor active lag metrics and consumer offsets every 10 seconds.
 - Validate end-to-end processing SLA latency using distributed tracing.
 - Maintain automated regression assertions across test environments.
+
+---
+
+## 4. Universal Format (UniForm) & Multi-Engine Open Catalogs (UC-OSS)
+
+The open table format landscape is unifying around **Delta UniForm (Universal Format)** and **Open Source Unity Catalog (UC-OSS)**, delivering zero-copy multi-engine interoperability across Delta Lake, Apache Iceberg, and Apache Hudi.
+
+```mermaid
+flowchart TD
+    subgraph DataWrite["Unified Lakehouse Ingestion"]
+        Engine["Databricks / Spark 3.5+ Writer"]
+        DeltaLog["Delta Transaction Commit Log"]
+    end
+
+    subgraph UniFormAsync["UniForm Metadata Synthesis"]
+        IcebergSync["Iceberg Metadata Tree (metadata.json)"]
+        HudiSync["Hudi Timeline (.hoodie)"]
+    end
+
+    subgraph OpenCatalog["Open Source Unity Catalog (UC-OSS REST API)"]
+        SparkEng["Apache Spark Engine"]
+        TrinoEng["Trino / Presto Distributed SQL"]
+        DuckDBEng["DuckDB Serverless Analytics"]
+        BigQueryEng["Google BigQuery BigLake Engine"]
+    end
+
+    Engine --> DeltaLog --> UniFormAsync
+    UniFormAsync --> IcebergSync & HudiSync
+    IcebergSync --> OpenCatalog
+    OpenCatalog --> SparkEng & TrinoEng & DuckDBEng & BigQueryEng
+```
+
+### Production Storage Implementation: Universal Table Format DDL
+```sql
+-- Delta table configured for universal zero-copy query by Snowflake and Trino
+CREATE TABLE prod_catalog.gold.fact_enterprise_metrics (
+    metric_id STRING,
+    metric_name STRING,
+    metric_value DOUBLE,
+    recorded_at TIMESTAMP
+)
+USING DELTA
+CLUSTER BY (metric_name, recorded_at)
+TBLPROPERTIES (
+    'delta.universalFormat.enabledFormats' = 'iceberg',
+    'delta.enableDeletionVectors' = 'true'
+);
+```
+
+### Key Multi-Format Invariants:
+- **Zero Storage Duplication**: Single physical Parquet dataset serves both native Delta clients and external Iceberg catalogs.
+- **Open Governance Interface**: UC-OSS provides standard REST endpoints enabling non-Spark engines (DuckDB, Trino, Flink) to securely read table metadata.

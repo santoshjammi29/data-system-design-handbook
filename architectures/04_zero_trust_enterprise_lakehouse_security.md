@@ -85,3 +85,47 @@ assert pipeline_config["checkpoint_interval_seconds"] > 0
 - Monitor active lag metrics and consumer offsets every 10 seconds.
 - Validate end-to-end processing SLA latency using distributed tracing.
 - Maintain automated regression assertions across test environments.
+
+---
+
+## 4. Attribute-Based Access Control (ABAC), Clean Rooms & Lakehouse Monitoring
+
+Modern enterprise lakehouses implement **Attribute-Based Access Control (ABAC)** and **Clean Rooms** to protect shared datasets while continuously tracking data drift with **Lakehouse Monitoring**.
+
+```mermaid
+flowchart LR
+    subgraph TagAssignment["Governance Tagging Layer"]
+        Tags["Columns tagged: 'pii' = 'high_risk'"]
+    end
+
+    subgraph PolicyEngine["Centralized Policy Enforcement Engine"]
+        ABAC["Tag Policy: Redact if not in 'data_stewards'"]
+        CleanRoom["Clean Room: Enforce k-anonymity aggregation (k >= 50)"]
+    end
+
+    subgraph Profiling["Continuous Observability"]
+        DriftMonitor["Lakehouse Monitor: Data & Concept Drift Profiler"]
+        SystemTable["System Tables: system.lakehouse_monitoring"]
+    end
+
+    Tags --> ABAC --> CleanRoom
+    CleanRoom --> DriftMonitor --> SystemTable
+```
+
+### Production Security Implementation: Centralized ABAC Policy Definition
+```sql
+-- Declare centralized tag-based dynamic masking policy
+CREATE OR REPLACE FUNCTION prod_catalog.security.mask_pii_string(val STRING)
+RETURN CASE
+    WHEN IS_ACCOUNT_GROUP_MEMBER('authorized_analysts') THEN val
+    ELSE '***-REDACTED-***'
+END;
+
+CREATE OR REPLACE POLICY pii_protection_policy
+ON TAG compliance_tier = 'confidential_pii'
+APPLY MASK prod_catalog.security.mask_pii_string;
+```
+
+### Key Security & Governance Invariants:
+- **Scalable Tag Enforcement**: Policies automatically apply to any newly created column tagged with `compliance_tier = 'confidential_pii'`.
+- **System Table Observability**: Quality metrics, null ratios, and data distribution shifts stream directly into system tables for automated alerting.
