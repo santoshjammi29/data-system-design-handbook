@@ -1,0 +1,260 @@
+{
+  "repo": "data-system-design-handbook",
+  "github": "santoshjammi29/data-system-design-handbook",
+  "name": "System Design Handbook",
+  "role": "Distributed systems architecture: Table formats (Delta, Iceberg, Hudi), catalog federation, Liquid Clustering",
+  "last_synced": "2026-11-20T08:25:01.799135Z",
+  "entry_count": 20,
+  "entries": [
+    {
+      "id": "data-system-design-handbook-01_lakehouse_and_medallion_architecture",
+      "type": "curriculum_module",
+      "title": "Lakehouse And Medallion Architecture",
+      "module": "01_lakehouse_and_medallion_architecture",
+      "difficulty": "L200",
+      "relative_path": "modules/01_lakehouse_and_medallion_architecture/README.md",
+      "pillars": [
+        "Modern Lakehouse Architectures",
+        "System Design for Data",
+        "Data Lake Architecture & Formats"
+      ]
+    },
+    {
+      "id": "data-system-design-handbook-02_table_format_tradeoff_matrix",
+      "type": "curriculum_module",
+      "title": "Table Format Tradeoff Matrix",
+      "module": "02_table_format_tradeoff_matrix",
+      "difficulty": "L200",
+      "relative_path": "modules/02_table_format_tradeoff_matrix/README.md",
+      "pillars": [
+        "Modern Lakehouse Architectures",
+        "System Design for Data",
+        "Data Lake Architecture & Formats"
+      ]
+    },
+    {
+      "id": "data-system-design-handbook-03_metadata_catalogs_and_federation",
+      "type": "curriculum_module",
+      "title": "Metadata Catalogs And Federation",
+      "module": "03_metadata_catalogs_and_federation",
+      "difficulty": "L200",
+      "relative_path": "modules/03_metadata_catalogs_and_federation/README.md",
+      "pillars": [
+        "Modern Lakehouse Architectures",
+        "System Design for Data",
+        "Data Lake Architecture & Formats"
+      ]
+    },
+    {
+      "id": "data-system-design-handbook-04_storage_optimization_and_clustering",
+      "type": "curriculum_module",
+      "title": "Storage Optimization And Clustering",
+      "module": "04_storage_optimization_and_clustering",
+      "difficulty": "L200",
+      "relative_path": "modules/04_storage_optimization_and_clustering/README.md",
+      "pillars": [
+        "Modern Lakehouse Architectures",
+        "System Design for Data",
+        "Data Lake Architecture & Formats"
+      ]
+    },
+    {
+      "id": "data-system-design-handbook-05_high_throughput_batch_and_cdf",
+      "type": "curriculum_module",
+      "title": "High Throughput Batch And Cdf",
+      "module": "05_high_throughput_batch_and_cdf",
+      "difficulty": "L200",
+      "relative_path": "modules/05_high_throughput_batch_and_cdf/README.md",
+      "pillars": [
+        "Modern Lakehouse Architectures",
+        "System Design for Data",
+        "Data Lake Architecture & Formats"
+      ]
+    },
+    {
+      "id": "data-system-design-handbook-06_realtime_event_driven_lakehouse",
+      "type": "curriculum_module",
+      "title": "Realtime Event Driven Lakehouse",
+      "module": "06_realtime_event_driven_lakehouse",
+      "difficulty": "L200",
+      "relative_path": "modules/06_realtime_event_driven_lakehouse/README.md",
+      "pillars": [
+        "Modern Lakehouse Architectures",
+        "System Design for Data",
+        "Data Lake Architecture & Formats"
+      ]
+    },
+    {
+      "id": "data-system-design-handbook-07_data_mesh_domain_decomposition",
+      "type": "curriculum_module",
+      "title": "Data Mesh Domain Decomposition",
+      "module": "07_data_mesh_domain_decomposition",
+      "difficulty": "L200",
+      "relative_path": "modules/07_data_mesh_domain_decomposition/README.md",
+      "pillars": [
+        "Modern Lakehouse Architectures",
+        "System Design for Data",
+        "Data Lake Architecture & Formats"
+      ]
+    },
+    {
+      "id": "data-system-design-handbook-08_zero_trust_security_and_governance",
+      "type": "curriculum_module",
+      "title": "Zero Trust Security And Governance",
+      "module": "08_zero_trust_security_and_governance",
+      "difficulty": "L200",
+      "relative_path": "modules/08_zero_trust_security_and_governance/README.md",
+      "pillars": [
+        "Modern Lakehouse Architectures",
+        "System Design for Data",
+        "Data Lake Architecture & Formats"
+      ]
+    },
+    {
+      "id": "data-system-design-handbook-09_multicloud_and_disaster_recovery",
+      "type": "curriculum_module",
+      "title": "Multicloud And Disaster Recovery",
+      "module": "09_multicloud_and_disaster_recovery",
+      "difficulty": "L200",
+      "relative_path": "modules/09_multicloud_and_disaster_recovery/README.md",
+      "pillars": [
+        "Modern Lakehouse Architectures",
+        "System Design for Data",
+        "Data Lake Architecture & Formats"
+      ]
+    },
+    {
+      "id": "data-system-design-handbook-10_finops_and_cost_optimization",
+      "type": "curriculum_module",
+      "title": "Finops And Cost Optimization",
+      "module": "10_finops_and_cost_optimization",
+      "difficulty": "L200",
+      "relative_path": "modules/10_finops_and_cost_optimization/README.md",
+      "pillars": [
+        "Modern Lakehouse Architectures",
+        "System Design for Data",
+        "Data Lake Architecture & Formats"
+      ]
+    },
+    {
+      "id": "data-system-design-handbook-rb-01_cross_region_split_brain_conflict_resolution",
+      "type": "incident_runbook",
+      "title": "Incident Runbook: Cross Region Split Brain Conflict Resolution",
+      "difficulty": "L400",
+      "relative_path": "runbooks/01_cross_region_split_brain_conflict_resolution.md",
+      "pillars": [
+        "Modern Lakehouse Architectures",
+        "System Design for Data",
+        "Data Lake Architecture & Formats"
+      ]
+    },
+    {
+      "id": "data-system-design-handbook-rb-02_table_format_metadata_explosion_triage",
+      "type": "incident_runbook",
+      "title": "Incident Runbook: Table Format Metadata Explosion Triage",
+      "difficulty": "L400",
+      "relative_path": "runbooks/02_table_format_metadata_explosion_triage.md",
+      "pillars": [
+        "Modern Lakehouse Architectures",
+        "System Design for Data",
+        "Data Lake Architecture & Formats"
+      ]
+    },
+    {
+      "id": "data-system-design-handbook-rb-03_data_lineage_and_audit_compliance_failure",
+      "type": "incident_runbook",
+      "title": "Incident Runbook: Data Lineage And Audit Compliance Failure",
+      "difficulty": "L400",
+      "relative_path": "runbooks/03_data_lineage_and_audit_compliance_failure.md",
+      "pillars": [
+        "Modern Lakehouse Architectures",
+        "System Design for Data",
+        "Data Lake Architecture & Formats"
+      ]
+    },
+    {
+      "id": "data-system-design-handbook-rb-04_multitenant_noisy_neighbor_starvation",
+      "type": "incident_runbook",
+      "title": "Incident Runbook: Multitenant Noisy Neighbor Starvation",
+      "difficulty": "L400",
+      "relative_path": "runbooks/04_multitenant_noisy_neighbor_starvation.md",
+      "pillars": [
+        "Modern Lakehouse Architectures",
+        "System Design for Data",
+        "Data Lake Architecture & Formats"
+      ]
+    },
+    {
+      "id": "data-system-design-handbook-rb-05_lakehouse_catalog_lockout_and_disaster_recovery",
+      "type": "incident_runbook",
+      "title": "Incident Runbook: Lakehouse Catalog Lockout And Disaster Recovery",
+      "difficulty": "L400",
+      "relative_path": "runbooks/05_lakehouse_catalog_lockout_and_disaster_recovery.md",
+      "pillars": [
+        "Modern Lakehouse Architectures",
+        "System Design for Data",
+        "Data Lake Architecture & Formats"
+      ]
+    },
+    {
+      "id": "data-system-design-handbook-rb-06_zero_trust_credential_leak_quarantine",
+      "type": "incident_runbook",
+      "title": "Incident Runbook: Zero Trust Credential Leak Quarantine",
+      "difficulty": "L400",
+      "relative_path": "runbooks/06_zero_trust_credential_leak_quarantine.md",
+      "pillars": [
+        "Modern Lakehouse Architectures",
+        "System Design for Data",
+        "Data Lake Architecture & Formats"
+      ]
+    },
+    {
+      "id": "data-system-design-handbook-doc-01_storage_format_tradeoff_matrix_delta_iceberg_hudi",
+      "type": "architecture_blueprint",
+      "title": "Architecture: 01 Storage Format Tradeoff Matrix Delta Iceberg Hudi",
+      "difficulty": "L400",
+      "relative_path": "architectures/01_storage_format_tradeoff_matrix_delta_iceberg_hudi.md",
+      "pillars": [
+        "Modern Lakehouse Architectures",
+        "System Design for Data",
+        "Data Lake Architecture & Formats"
+      ]
+    },
+    {
+      "id": "data-system-design-handbook-doc-02_data_mesh_domain_decomposition_and_contracts",
+      "type": "architecture_blueprint",
+      "title": "Architecture: 02 Data Mesh Domain Decomposition And Contracts",
+      "difficulty": "L400",
+      "relative_path": "architectures/02_data_mesh_domain_decomposition_and_contracts.md",
+      "pillars": [
+        "Modern Lakehouse Architectures",
+        "System Design for Data",
+        "Data Lake Architecture & Formats"
+      ]
+    },
+    {
+      "id": "data-system-design-handbook-doc-03_global_active_active_lakehouse_replication",
+      "type": "architecture_blueprint",
+      "title": "Architecture: 03 Global Active Active Lakehouse Replication",
+      "difficulty": "L400",
+      "relative_path": "architectures/03_global_active_active_lakehouse_replication.md",
+      "pillars": [
+        "Modern Lakehouse Architectures",
+        "System Design for Data",
+        "Data Lake Architecture & Formats"
+      ]
+    },
+    {
+      "id": "data-system-design-handbook-doc-04_zero_trust_enterprise_lakehouse_security",
+      "type": "architecture_blueprint",
+      "title": "Architecture: 04 Zero Trust Enterprise Lakehouse Security",
+      "difficulty": "L400",
+      "relative_path": "architectures/04_zero_trust_enterprise_lakehouse_security.md",
+      "pillars": [
+        "Modern Lakehouse Architectures",
+        "System Design for Data",
+        "Data Lake Architecture & Formats"
+      ]
+    }
+  ]
+}
