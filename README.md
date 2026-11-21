@@ -344,7 +344,7 @@ Comprehensive technical interview guides and flashcard deck located under `inter
 
 ## 🌐 Ecosystem Interlinking & Sister Repositories
 
-The Modern Data Engineering Lakehouse Ecosystem is an integrated suite of 13 production-grade, specialized repositories anchored by the **[Modern Data Engineer Platform ()](https://github.com/santoshjammi29/moderndataengineer)**. Use this cross-reference matrix to navigate directly between complementary implementations across our repositories:
+The Modern Data Engineering Lakehouse Ecosystem is an integrated suite of 14 production-grade, specialized repositories anchored by the **[Modern Data Engineer Platform (`moderndataengineer.uk`)](https://github.com/santoshjammi29/moderndataengineer)**. Use this cross-reference matrix to navigate directly between complementary implementations across our repositories:
 
 | Repository | Focus & Domain | Tightly Coupled Cross-Reference & Integration Points |
 | :--- | :--- | :--- |
@@ -359,6 +359,7 @@ The Modern Data Engineering Lakehouse Ecosystem is an integrated suite of 13 pro
 | **[The dbt Handbook](https://github.com/santoshjammi29/dbt-handbook)** | Analytics Engineering, dbt Mesh & Contracts | • **Data Mesh & Contracts**: Designing decentralized domain data products with version-controlled contracts.<br>• **Table Formats**: Delta Lake vs Apache Iceberg transactional guarantees underlying dbt models. |
 | **[DataOps & CI/CD Handbook](https://github.com/santoshjammi29/dataops-cicd-handbook)** | Platform Engineering & GitOps | • **Disaster Recovery (BCDR)**: Automated cross-region failover testing and DNS routing scripts.<br>• **Table Format Maintenance**: Automating VACUUM, OPTIMIZE, and compaction lifecycle jobs. |
 | **[Interview Handbook](https://github.com/santoshjammi29/data-engineering-interview-handbook)** | Architectural Defense Playbooks & Concepts | • **Pillar 14 Defense**: System design at scale, multi-tenant lakehouse isolation, and real-time feature stores.<br>• **Playbook 06 High-Throughput**: High-throughput distributed system design and disaster recovery. |
+| **[The Security Handbook](https://github.com/santoshjammi29/security-handbook)** | Enterprise Cloud Security, Zero Trust & Lakehouse Governance | • **Zero Trust Lakehouse Perimeter**: Private endpoints, NSGs, and Azure Key Vault envelope encryption.<br>• **Workload Identity Federation**: Keyless GitHub Actions OIDC and Azure Managed Identities. |
 | **[Modern Data Engineer Hub](https://github.com/santoshjammi29/moderndataengineer)** | Central Edge Presentation Platform | • **Interactive Whiteboard Viewer**: Pan, zoom, and inspect all 52 blueprints at [moderndataengineer.uk/whiteboards](https://moderndataengineer.uk/whiteboards).<br>• **System Design Schematics**: Comprehensive architectural blueprints for enterprise lakehouses. |
 
 ## 📜 License
