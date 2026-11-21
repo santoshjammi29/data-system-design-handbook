@@ -1,8 +1,9 @@
-# 🚨 Production Runbook: Centralized Catalog Loss & Disaster Recovery Runbook
+# 🚨 Production Runbook 05: Lakehouse Catalog Outage & Emergency Bypass
 
-> **Severity**: `SEV-1`  
-> **Domain**: Data Systems Design & Enterprise Architecture  
-> **Key Focus**: Recover from metastore failure using raw storage metadata files and catalog failover.
+> **Incident Severity**: `SEV-1`  
+> **Domain**: Metadata Catalogs & High Availability  
+> **Target Systems**: Databricks Unity Catalog, AWS Glue Catalog, Apache Iceberg REST Catalog  
+> **Objective**: Restore query access during a central catalog outage using direct object storage fallback mounts.
 
 ---
 
@@ -10,58 +11,39 @@
 
 ```mermaid
 flowchart TD
-    Alert["🚨 Centralized Catalog Loss & Disaster Recovery Runbook (SEV-1)"] --> TriageCategory{"Identify Root Cause Category"}
+    Alert["SEV-1 Alert: Unity Catalog / Glue Unavailable (Metadata Resolution Failed)"] --> FailoverCatalog["Step 1: Switch to Read-Only Catalog Replica"]
+    FailoverCatalog --> SuccessCheck{"Replica Responding?"}
     
-    TriageCategory -->|"Configuration or Schema Drift"| ConfigTriage["Inspect Pipeline Schema & Type Contracts"]
-    TriageCategory -->|"Resource Starvation or OOM"| ResourceTriage["Inspect Memory Pools, Off-Heap State & GC"]
-    TriageCategory -->|"Network or Storage Timeout"| NetworkTriage["Inspect Downstream Latency & Deadlocks"]
-
-    ConfigTriage --> FixConfig["Remediation: Pin Schema Contracts & Apply Reversion"]
-    ResourceTriage --> FixResource["Remediation: Increase Worker Memory & Throttle Batch Slices"]
-    NetworkTriage --> FixNetwork["Remediation: Trigger Failover & Backoff Retry Strategy"]
+    SuccessCheck -->|Yes| DirectTraffic["Route Query Engines to Secondary Catalog Endpoint"]
+    SuccessCheck -->|No| DirectPathFallback["Bypass Catalog via Direct Object Storage Paths (delta.`abfss://...`)"]
 ```
 
 ---
 
 ## 2. Immediate Diagnostic Procedures (First 5 Minutes)
 
-### Step 1: Query Error Signatures and Pipeline Metrics
-Run the following inspection commands to isolate the fault:
+### Step 1: Verify Catalog Health Endpoint
 ```bash
-# Check pipeline task status and recent error traces
-echo "Inspecting error status for pipeline..."
-grep -E "ERROR|CRITICAL|Exception|Timeout" /var/log/pipeline.log | tail -n 25
-```
-
-### Step 2: Inspect Worker and State Health
-Check memory, disk saturation, and open file descriptors:
-```bash
-# Verify worker container resource utilization
-ps aux --sort=-%mem | head -n 10
+curl -I -s "https://catalog-prod.internal.company.com/v1/health" | head -n 5
 ```
 
 ---
 
-## 3. Root Cause Analysis & Detailed Remediation
+## 3. Root Cause Analysis & Production Remediation
 
-### Primary Root Cause
-In production systems, this incident typically originates from sudden traffic surges, upstream breaking schema mutations, or resource limits being breached without backpressure.
+### Emergency Direct Storage Path Bypass Script
+```python
+# During complete catalog outage, bypass catalog name resolution
+# by referencing absolute Delta Lake cloud storage paths directly
+df_orders = spark.read.format("delta").load("abfss://gold@datalake.dfs.core.windows.net/marts/orders")
+df_customers = spark.read.format("delta").load("abfss://gold@datalake.dfs.core.windows.net/marts/customers")
 
-### Remediation & Recovery Strategy:
-1. **Apply Emergency Throttle**: Restrict incoming batch size or pause non-critical consumers.
-2. **Apply Hotfix Configuration**:
-   ```python
-   # Emergency throttle configuration
-   throttle_rate_per_sec = 5000
-   retry_backoff_multiplier = 2.0
-   max_retry_limit = 5
-   ```
-3. **Execute Recovery Step**: Re-run the validation test suite and verify consumer convergence.
+# Critical queries continue executing without catalog dependency
+df_orders.join(df_customers, "customer_id").createOrReplaceTempView("emergency_orders")
+```
 
 ---
 
-## 4. Verification & Prevention Checklist
-
-- [ ] Pipeline metrics return to baseline with 0 active error alerts.
-- [ ] Processing latency conforms to standard production SLAs.
-- [ ] Postmortem root cause documented and shared with architecture leads.
+## 4. Verification & Prevention
+- [ ] Confirm mission-critical dashboards load via fallback storage paths.
+- [ ] Configure multi-region replication for Unity Catalog / Iceberg REST metadata backend.

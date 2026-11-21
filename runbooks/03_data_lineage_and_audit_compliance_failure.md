@@ -1,8 +1,9 @@
-# 🚨 Production Runbook: Regulatory Audit Failure & Data Lineage Gap Triage
+# 🚨 Production Runbook 03: OpenLineage Telemetry Failure & Audit Gap Triage
 
-> **Severity**: `SEV-1`  
-> **Domain**: Data Systems Design & Enterprise Architecture  
-> **Key Focus**: Perform forensic tracking of GDPR right-to-be-forgotten deletion chains across lake tiers.
+> **Incident Severity**: `SEV-2`  
+> **Domain**: Governance, Lineage & Regulatory Compliance (BCBS 239 / GDPR)  
+> **Target Systems**: OpenLineage, Marquez, Microsoft Purview, Databricks Unity Catalog  
+> **Objective**: Restore missing data lineage run facets and repair audit trail compliance gaps.
 
 ---
 
@@ -10,58 +11,42 @@
 
 ```mermaid
 flowchart TD
-    Alert["🚨 Regulatory Audit Failure & Data Lineage Gap Triage (SEV-1)"] --> TriageCategory{"Identify Root Cause Category"}
+    Alert["SEV-2 Alert: Broken OpenLineage Telemetry / Audit Lineage Gap"] --> TestEndpoint["Step 1: Test OpenLineage Backend Endpoint Reachability"]
+    TestEndpoint --> Reachable{"HTTP 200 OK?"}
     
-    TriageCategory -->|"Configuration or Schema Drift"| ConfigTriage["Inspect Pipeline Schema & Type Contracts"]
-    TriageCategory -->|"Resource Starvation or OOM"| ResourceTriage["Inspect Memory Pools, Off-Heap State & GC"]
-    TriageCategory -->|"Network or Storage Timeout"| NetworkTriage["Inspect Downstream Latency & Deadlocks"]
-
-    ConfigTriage --> FixConfig["Remediation: Pin Schema Contracts & Apply Reversion"]
-    ResourceTriage --> FixResource["Remediation: Increase Worker Memory & Throttle Batch Slices"]
-    NetworkTriage --> FixNetwork["Remediation: Trigger Failover & Backoff Retry Strategy"]
+    Reachable -->|"No: Connection Refused"| RestoreBackend["Restart Marquez / Purview Ingestion Service"]
+    Reachable -->|"Yes: Dropping Facets"| CheckSparkListener["Inspect Spark OpenLineage SparkListener Config"]
+    
+    RestoreBackend --> ResendRunEvents["Replay Missed RunEvents from Pipeline Run Logs"]
+    CheckSparkListener --> PatchListener["Update openlineage-spark Jar & URL"]
 ```
 
 ---
 
 ## 2. Immediate Diagnostic Procedures (First 5 Minutes)
 
-### Step 1: Query Error Signatures and Pipeline Metrics
-Run the following inspection commands to isolate the fault:
+### Step 1: Verify OpenLineage SparkListener Output
 ```bash
-# Check pipeline task status and recent error traces
-echo "Inspecting error status for pipeline..."
-grep -E "ERROR|CRITICAL|Exception|Timeout" /var/log/pipeline.log | tail -n 25
-```
-
-### Step 2: Inspect Worker and State Health
-Check memory, disk saturation, and open file descriptors:
-```bash
-# Verify worker container resource utilization
-ps aux --sort=-%mem | head -n 10
+grep -E "OpenLineage|io.openlineage.spark.agent" /var/log/spark/driver.log | tail -n 25
 ```
 
 ---
 
-## 3. Root Cause Analysis & Detailed Remediation
+## 3. Root Cause Analysis & Production Remediation
 
-### Primary Root Cause
-In production systems, this incident typically originates from sudden traffic surges, upstream breaking schema mutations, or resource limits being breached without backpressure.
-
-### Remediation & Recovery Strategy:
-1. **Apply Emergency Throttle**: Restrict incoming batch size or pause non-critical consumers.
-2. **Apply Hotfix Configuration**:
-   ```python
-   # Emergency throttle configuration
-   throttle_rate_per_sec = 5000
-   retry_backoff_multiplier = 2.0
-   max_retry_limit = 5
-   ```
-3. **Execute Recovery Step**: Re-run the validation test suite and verify consumer convergence.
+### Production OpenLineage Spark Configuration
+```properties
+# spark-defaults.conf
+spark.extraListeners=io.openlineage.spark.agent.OpenLineageSparkListener
+spark.openlineage.transport.type=http
+spark.openlineage.transport.url=https://lineage.internal.company.com:443
+spark.openlineage.transport.auth.type=api_key
+spark.openlineage.transport.auth.apiKey=${env:OPENLINEAGE_API_KEY}
+spark.openlineage.namespace=production-lakehouse
+```
 
 ---
 
-## 4. Verification & Prevention Checklist
-
-- [ ] Pipeline metrics return to baseline with 0 active error alerts.
-- [ ] Processing latency conforms to standard production SLAs.
-- [ ] Postmortem root cause documented and shared with architecture leads.
+## 4. Verification & Prevention
+- [ ] Confirm line-level and dataset-level edges appear in Marquez / Purview UI.
+- [ ] Set alert on `openlineage_emitted_events_total == 0` during active batch runs.
