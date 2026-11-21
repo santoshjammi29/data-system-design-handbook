@@ -1,8 +1,9 @@
-# 🚨 Production Runbook: Cross-Region Split-Brain State & Conflict Resolution
+# 🚨 Production Runbook 01: Cross-Region Split-Brain & Lakehouse Conflict Resolution
 
-> **Severity**: `SEV-1`  
-> **Domain**: Data Systems Design & Enterprise Architecture  
-> **Key Focus**: Resolve divergent commits across cloud regions, reconcile delta logs, and re-establish primary.
+> **Incident Severity**: `SEV-1`  
+> **Domain**: Distributed Lakehouse Architecture & Disaster Recovery  
+> **Target Systems**: Azure Databricks, ADLS Gen2 (Primary: East US, Secondary: West Europe), Delta Lake 3.x  
+> **Objective**: Reconcile divergent Delta Lake transaction logs following cross-region network partitioning.
 
 ---
 
@@ -10,58 +11,72 @@
 
 ```mermaid
 flowchart TD
-    Alert["🚨 Cross-Region Split-Brain State & Conflict Resolution (SEV-1)"] --> TriageCategory{"Identify Root Cause Category"}
+    Alert["SEV-1 Alert: Active-Active Lakehouse Split-Brain Detected"] --> IsolateSecondary["Step 1: Quench Secondary Region Writes (Set Read-Only)"]
+    IsolateSecondary --> CompareCommitLogs["Step 2: Compare Delta Log Versions across Primary & Secondary"]
     
-    TriageCategory -->|"Configuration or Schema Drift"| ConfigTriage["Inspect Pipeline Schema & Type Contracts"]
-    TriageCategory -->|"Resource Starvation or OOM"| ResourceTriage["Inspect Memory Pools, Off-Heap State & GC"]
-    TriageCategory -->|"Network or Storage Timeout"| NetworkTriage["Inspect Downstream Latency & Deadlocks"]
-
-    ConfigTriage --> FixConfig["Remediation: Pin Schema Contracts & Apply Reversion"]
-    ResourceTriage --> FixResource["Remediation: Increase Worker Memory & Throttle Batch Slices"]
-    NetworkTriage --> FixNetwork["Remediation: Trigger Failover & Backoff Retry Strategy"]
+    CompareCommitLogs --> DivergenceCheck{"Commit Log Diverged?"}
+    DivergenceCheck -->|"Secondary has uncommitted transactions"| ExtractDiff["Step 3: Extract Delta Time Travel Delta Diff from Secondary"]
+    
+    ExtractDiff --> ReconcilePrimary["Step 4: Execute Deterministic MERGE into Primary Region"]
+    ReconcilePrimary --> ResyncSecondary["Step 5: Overwrite Secondary Storage via Deep Clone"]
 ```
 
 ---
 
 ## 2. Immediate Diagnostic Procedures (First 5 Minutes)
 
-### Step 1: Query Error Signatures and Pipeline Metrics
-Run the following inspection commands to isolate the fault:
+### Step 1: Quench Secondary Storage Account Writes
 ```bash
-# Check pipeline task status and recent error traces
-echo "Inspecting error status for pipeline..."
-grep -E "ERROR|CRITICAL|Exception|Timeout" /var/log/pipeline.log | tail -n 25
+# Set secondary ADLS Gen2 container access to read-only via Azure CLI
+az storage container set-permission   --account-name "datalakewesteurope"   --name "silver"   --public-access off
 ```
 
-### Step 2: Inspect Worker and State Health
-Check memory, disk saturation, and open file descriptors:
+### Step 2: Compare Transaction Log Version HEADs
 ```bash
-# Verify worker container resource utilization
-ps aux --sort=-%mem | head -n 10
+# Inspect latest Delta commit JSON in primary vs secondary
+PRIMARY_VERSION=$(az storage blob list --account-name datalakeeastus --container silver --prefix "_delta_log/" --query "[-1].name")
+SECONDARY_VERSION=$(az storage blob list --account-name datalakewesteurope --container silver --prefix "_delta_log/" --query "[-1].name")
+
+echo "Primary HEAD: $PRIMARY_VERSION | Secondary HEAD: $SECONDARY_VERSION"
 ```
 
 ---
 
-## 3. Root Cause Analysis & Detailed Remediation
+## 3. Root Cause Analysis & Production Remediation
 
-### Primary Root Cause
-In production systems, this incident typically originates from sudden traffic surges, upstream breaking schema mutations, or resource limits being breached without backpressure.
+### Production Delta Lake Time Travel Reconciliation Script
+```python
+from pyspark.sql import SparkSession
+from delta.tables import DeltaTable
 
-### Remediation & Recovery Strategy:
-1. **Apply Emergency Throttle**: Restrict incoming batch size or pause non-critical consumers.
-2. **Apply Hotfix Configuration**:
-   ```python
-   # Emergency throttle configuration
-   throttle_rate_per_sec = 5000
-   retry_backoff_multiplier = 2.0
-   max_retry_limit = 5
-   ```
-3. **Execute Recovery Step**: Re-run the validation test suite and verify consumer convergence.
+spark = SparkSession.builder     .appName("SplitBrainDeltaReconciliation")     .config("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension")     .getOrCreate()
+
+primary_path = "abfss://silver@datalakeeastus.dfs.core.windows.net/orders"
+secondary_path = "abfss://silver@datalakewesteurope.dfs.core.windows.net/orders"
+
+# Read latest state from primary
+primary_table = DeltaTable.forPath(spark, primary_path)
+
+# Extract records written to secondary during network partition
+# Assuming partition started at version 1042
+secondary_diff_df = spark.read     .format("delta")     .option("readChangeFeed", "true")     .option("startingVersion", 1042)     .load(secondary_path)     .filter("_change_type IN ('insert', 'update_postimage')")
+
+# Apply deterministic MERGE into Primary (Last-Write-Wins based on event_timestamp)
+primary_table.alias("target").merge(
+    secondary_diff_df.alias("source"),
+    "target.order_id = source.order_id"
+).whenMatchedUpdate(
+    condition="source.event_timestamp > target.event_timestamp",
+    set={"order_status": "source.order_status", "updated_at": "source.updated_at"}
+).whenNotMatchedInsertAll().execute()
+
+print("Reconciliation complete. Refreshing secondary region via Deep Clone...")
+spark.sql(f"CREATE OR REPLACE TABLE delta.`{secondary_path}` DEEP CLONE delta.`{primary_path}`")
+```
 
 ---
 
-## 4. Verification & Prevention Checklist
-
-- [ ] Pipeline metrics return to baseline with 0 active error alerts.
-- [ ] Processing latency conforms to standard production SLAs.
-- [ ] Postmortem root cause documented and shared with architecture leads.
+## 4. Verification & Prevention
+- [ ] Verify `_delta_log` version numbers on secondary match primary exactly.
+- [ ] Confirm row counts across both storage accounts match 100%.
+- [ ] Ensure architecture enforces Active-Passive writes during WAN degraded states.

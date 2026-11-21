@@ -1,8 +1,9 @@
-# 🚨 Production Runbook: Multi-Tenant Resource Queue Starvation & Noisy Neighbors
+# 🚨 Production Runbook 04: Multi-Tenant Compute Starvation & Noisy Neighbor Triage
 
-> **Severity**: `SEV-2`  
-> **Domain**: Data Systems Design & Enterprise Architecture  
-> **Key Focus**: Diagnose Fair Scheduler priority inversion, CPU/IOPS saturation, and quota throttling.
+> **Incident Severity**: `SEV-1`  
+> **Domain**: Cloud MPP, Databricks SQL & Concurrency Management  
+> **Target Systems**: Databricks SQL Warehouses, Snowflake Virtual Warehouses, Spark Clusters  
+> **Objective**: Terminate rogue analytical Cartesian queries starving SLA-critical production pipelines.
 
 ---
 
@@ -10,58 +11,44 @@
 
 ```mermaid
 flowchart TD
-    Alert["🚨 Multi-Tenant Resource Queue Starvation & Noisy Neighbors (SEV-2)"] --> TriageCategory{"Identify Root Cause Category"}
-    
-    TriageCategory -->|"Configuration or Schema Drift"| ConfigTriage["Inspect Pipeline Schema & Type Contracts"]
-    TriageCategory -->|"Resource Starvation or OOM"| ResourceTriage["Inspect Memory Pools, Off-Heap State & GC"]
-    TriageCategory -->|"Network or Storage Timeout"| NetworkTriage["Inspect Downstream Latency & Deadlocks"]
-
-    ConfigTriage --> FixConfig["Remediation: Pin Schema Contracts & Apply Reversion"]
-    ResourceTriage --> FixResource["Remediation: Increase Worker Memory & Throttle Batch Slices"]
-    NetworkTriage --> FixNetwork["Remediation: Trigger Failover & Backoff Retry Strategy"]
+    Alert["SEV-1 Alert: Production SLA Pipeline Queued Behind Ad-Hoc Query"] --> IdentifyRogue["Step 1: Query Active Queries by Runtime & Memory Usage"]
+    IdentifyRogue --> KillRogue["Step 2: Terminate Runaway Query Immediately"]
+    KillRogue --> IsolateWorkloads["Step 3: Route Ad-Hoc Analytics to Dedicated Warehouse"]
 ```
 
 ---
 
 ## 2. Immediate Diagnostic Procedures (First 5 Minutes)
 
-### Step 1: Query Error Signatures and Pipeline Metrics
-Run the following inspection commands to isolate the fault:
-```bash
-# Check pipeline task status and recent error traces
-echo "Inspecting error status for pipeline..."
-grep -E "ERROR|CRITICAL|Exception|Timeout" /var/log/pipeline.log | tail -n 25
-```
-
-### Step 2: Inspect Worker and State Health
-Check memory, disk saturation, and open file descriptors:
-```bash
-# Verify worker container resource utilization
-ps aux --sort=-%mem | head -n 10
+### Step 1: Identify Longest Running Active Query
+```sql
+-- Databricks SQL / Snowflake: Find queries exceeding 30 minutes
+SELECT
+    query_id,
+    user_name,
+    warehouse_id,
+    duration_ms / 1000 AS running_seconds,
+    statement_text
+FROM system.query.history
+WHERE execution_status = 'RUNNING'
+ORDER BY duration_ms DESC
+LIMIT 5;
 ```
 
 ---
 
-## 3. Root Cause Analysis & Detailed Remediation
+## 3. Root Cause Analysis & Production Remediation
 
-### Primary Root Cause
-In production systems, this incident typically originates from sudden traffic surges, upstream breaking schema mutations, or resource limits being breached without backpressure.
-
-### Remediation & Recovery Strategy:
-1. **Apply Emergency Throttle**: Restrict incoming batch size or pause non-critical consumers.
-2. **Apply Hotfix Configuration**:
-   ```python
-   # Emergency throttle configuration
-   throttle_rate_per_sec = 5000
-   retry_backoff_multiplier = 2.0
-   max_retry_limit = 5
-   ```
-3. **Execute Recovery Step**: Re-run the validation test suite and verify consumer convergence.
+### Configure Query Watchdog and Auto-Termination Rules
+```sql
+-- Enforce hard runtime limits on ad-hoc analytical warehouses (max 20 minutes)
+ALTER WAREHOUSE adhoc_analytics_wh 
+SET AUTO_TERMINATION_MINUTES = 10,
+    MAX_CONCURRENT_QUERIES = 8;
+```
 
 ---
 
-## 4. Verification & Prevention Checklist
-
-- [ ] Pipeline metrics return to baseline with 0 active error alerts.
-- [ ] Processing latency conforms to standard production SLAs.
-- [ ] Postmortem root cause documented and shared with architecture leads.
+## 4. Verification & Prevention
+- [ ] Isolate SLA-bound production batch jobs to a dedicated, decoupled warehouse pool.
+- [ ] Enable Databricks Query Watchdog to automatically kill Cartesian joins ($O(M 	imes N)$).
