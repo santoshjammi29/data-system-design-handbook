@@ -3,8 +3,8 @@
   "github": "santoshjammi29/data-system-design-handbook",
   "name": "System Design Handbook",
   "role": "Distributed systems architecture: Table formats (Delta, Iceberg, Hudi), catalog federation, Liquid Clustering",
-  "last_synced": "2026-11-21T04:54:58.629864Z",
-  "entry_count": 20,
+  "last_synced": "2026-11-22T07:34:24.146109Z",
+  "entry_count": 21,
   "entries": [
     {
       "id": "data-system-design-handbook-01_lakehouse_and_medallion_architecture",
@@ -250,6 +250,18 @@
       "title": "Architecture: 04 Zero Trust Enterprise Lakehouse Security",
       "difficulty": "L400",
       "relative_path": "architectures/04_zero_trust_enterprise_lakehouse_security.md",
+      "pillars": [
+        "Modern Lakehouse Architectures",
+        "System Design for Data",
+        "Data Lake Architecture & Formats"
+      ]
+    },
+    {
+      "id": "data-system-design-handbook-curriculum-topics",
+      "type": "curriculum_topics_catalog",
+      "title": "Topics Directory: System Design Handbook",
+      "difficulty": "L200",
+      "relative_path": "topics/README.md",
       "pillars": [
         "Modern Lakehouse Architectures",
         "System Design for Data",

@@ -13,10 +13,10 @@
 flowchart TD
     Alert["SEV-2 Alert: Spark Query Planning Exceeds 60s (Metadata Bloat)"] --> CountMetadata["Step 1: Count Commit Files in _delta_log or metadata/"]
     CountMetadata --> ThresholdCheck{"Commit File Count > 10,000?"}
-    
+
     ThresholdCheck -->|Yes| CompactionNeeded["Metadata File Explosion Detected"]
     ThresholdCheck -->|No| CheckDriverMemory["Check Driver Heap & GC Pauses"]
-    
+
     CompactionNeeded --> ForceCheckpoint["Force Multi-Part Checkpoint Generation"]
     ForceCheckpoint --> RunVacuum["Execute VACUUM RETAIN 168 HOURS"]
     RunVacuum --> OptimizeBinPack["Execute OPTIMIZE ZORDER BY"]
@@ -50,7 +50,7 @@ SET spark.databricks.delta.vacuum.parallelDelete.enabled = true;
 VACUUM gold.orders RETAIN 168 HOURS;
 
 -- 3. Configure automated checkpointing every 10 commits
-ALTER TABLE gold.orders 
+ALTER TABLE gold.orders
 SET TBLPROPERTIES (
     'delta.checkpointInterval' = '10',
     'delta.deletedFileRetentionDuration' = 'interval 7 days'

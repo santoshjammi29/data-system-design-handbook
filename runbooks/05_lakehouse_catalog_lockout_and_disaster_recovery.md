@@ -13,7 +13,7 @@
 flowchart TD
     Alert["SEV-1 Alert: Unity Catalog / Glue Unavailable (Metadata Resolution Failed)"] --> FailoverCatalog["Step 1: Switch to Read-Only Catalog Replica"]
     FailoverCatalog --> SuccessCheck{"Replica Responding?"}
-    
+
     SuccessCheck -->|Yes| DirectTraffic["Route Query Engines to Secondary Catalog Endpoint"]
     SuccessCheck -->|No| DirectPathFallback["Bypass Catalog via Direct Object Storage Paths (delta.`abfss://...`)"]
 ```

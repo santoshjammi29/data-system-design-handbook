@@ -13,10 +13,10 @@
 flowchart TD
     Alert["SEV-1 Alert: Active-Active Lakehouse Split-Brain Detected"] --> IsolateSecondary["Step 1: Quench Secondary Region Writes (Set Read-Only)"]
     IsolateSecondary --> CompareCommitLogs["Step 2: Compare Delta Log Versions across Primary & Secondary"]
-    
+
     CompareCommitLogs --> DivergenceCheck{"Commit Log Diverged?"}
     DivergenceCheck -->|"Secondary has uncommitted transactions"| ExtractDiff["Step 3: Extract Delta Time Travel Delta Diff from Secondary"]
-    
+
     ExtractDiff --> ReconcilePrimary["Step 4: Execute Deterministic MERGE into Primary Region"]
     ReconcilePrimary --> ResyncSecondary["Step 5: Overwrite Secondary Storage via Deep Clone"]
 ```

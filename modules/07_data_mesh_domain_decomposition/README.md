@@ -1,10 +1,7 @@
 # Module 07: Data Mesh Architecture & Data Contract Specification
 
-
 ![Enterprise Data Mesh: Decentralized Domains & Data Products](../../assets/whiteboards/data_mesh_enterprise_architecture.webp)
 > *Architectural Blueprint: [Enterprise Data Mesh: Decentralized Domains & Data Products](../../docs/whiteboard_diagrams/README.md#data-mesh-enterprise-architecture). View full multi-persona breakdown and engine mechanisms in the master index.*
-
-
 
 ## 1. Four Pillars of Data Mesh
 1. **Domain Ownership**: Business domains (Billing, Logistics, Customer) own and operate their data pipelines.

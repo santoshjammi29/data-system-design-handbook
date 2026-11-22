@@ -881,7 +881,7 @@ MERGE INTO enterprise_lake.crm.dim_customers AS target
 USING staging.customer_updates AS source
 ON target.customer_id = source.customer_id
 WHEN MATCHED AND target.updated_at < source.updated_at THEN
-  UPDATE SET 
+  UPDATE SET
     target.email = source.email,
     target.status = source.status,
     target.updated_at = source.updated_at

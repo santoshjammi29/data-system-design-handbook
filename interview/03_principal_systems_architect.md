@@ -963,7 +963,7 @@ class EnterpriseRAGAgent(mlflow.pyfunc.PythonModel):
             endpoint_name="prod_vector_search_endpoint",
             index_name="prod_catalog.ai_schema.enterprise_docs_idx"
         )
-    
+
     def predict(self, context, model_input):
         question = model_input["query"].iloc[0]
         # Retrieve context from Vector Search index
