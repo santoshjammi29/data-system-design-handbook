@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/repo-header.svg" width="100%" alt="Repository Header Banner" />
+</p>
+
 # 🏛️ The Data Engineering & Lakehouse System Design Handbook
 
 **Enterprise Reference Architecture, Production Incident Runbooks & 4-Tier Interview Preparation Matrix**
