@@ -42,7 +42,7 @@ LIMIT 5;
 ### Configure Query Watchdog and Auto-Termination Rules
 ```sql
 -- Enforce hard runtime limits on ad-hoc analytical warehouses (max 20 minutes)
-ALTER WAREHOUSE adhoc_analytics_wh 
+ALTER WAREHOUSE adhoc_analytics_wh
 SET AUTO_TERMINATION_MINUTES = 10,
     MAX_CONCURRENT_QUERIES = 8;
 ```

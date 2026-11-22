@@ -1,10 +1,7 @@
 # Module 01: Enterprise Lakehouse & Medallion Topology Design
 
-
 ![Databricks Medallion Lakehouse Architecture](../../assets/whiteboards/databricks_medallion_architecture.webp)
 > *Architectural Blueprint: [Databricks Medallion Lakehouse Architecture](../../docs/whiteboard_diagrams/README.md#databricks-medallion-pipeline). View full multi-persona breakdown and engine mechanisms in the master index.*
-
-
 
 ## 1. Medallion Layer Topology & SLA Guarantees
 - **Bronze (Raw Ingestion)**: Immutable, append-only landing zone. Captures raw JSON, CSV, or CDC logs with full payload and ingestion timestamps. Never queried by end-users.

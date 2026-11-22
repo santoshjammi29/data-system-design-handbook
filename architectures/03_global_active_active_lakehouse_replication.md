@@ -1,14 +1,10 @@
 # 🏛️ Architecture: Global Active-Active Lakehouse Multi-Region Replication
 
-
 ![Lakehouse Disaster Recovery (BCDR) Cross-Region Failover & Split-Brain Prevention](../assets/whiteboards/lakehouse_bcdr_failover_architecture.webp)
 > *Architectural Blueprint: [Lakehouse Disaster Recovery (BCDR) Cross-Region Failover & Split-Brain Prevention](../docs/whiteboard_diagrams/README.md#lakehouse-bcdr-failover). View full multi-persona breakdown and engine mechanisms in the master index.*
 
-
 ![Distributed Systems Design: High-Throughput & Resilient Architecture](../assets/whiteboards/distributed_systems_resilience_architecture.webp)
 > *Architectural Blueprint: [Distributed Systems Design: High-Throughput & Resilient Architecture](../docs/whiteboard_diagrams/README.md#distributed-systems-resilience-architecture). View full multi-persona breakdown and engine mechanisms in the master index.*
-
-
 
 > **Domain**: Data Systems Design & Enterprise Architecture  
 > **Target Audience**: Senior Engineers, Data Architects, Platform Leads  

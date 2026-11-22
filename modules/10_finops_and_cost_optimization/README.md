@@ -1,10 +1,7 @@
 # Module 10: FinOps, Resource Allocation & Warehouse Rightsizing
 
-
 ![Enterprise Lakehouse FinOps & Cloud Cost Optimization](../../assets/whiteboards/lakehouse_finops_cost_optimization.webp)
 > *Architectural Blueprint: [Enterprise Lakehouse FinOps & Cloud Cost Optimization](../../docs/whiteboard_diagrams/README.md#lakehouse-finops-cost-optimization). View full multi-persona breakdown and engine mechanisms in the master index.*
-
-
 
 ## 1. FinOps Framework for Big Data
 1. **Inform**: Tag every query and cluster with `cost_center`, `domain`, and `environment`.
