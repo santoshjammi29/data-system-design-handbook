@@ -21,7 +21,7 @@ flowchart TD
         S2["Contract & Metadata Registry"]
     end
 
-    subgraph Engine["2. Core Execution Engine (Data Systems Design & Enterprise Architecture)"]
+    subgraph Engine["2. Core Execution Engine (Data Systems Design<br/>& Enterprise Architecture)"]
         P1["Parser & Semantic Analyzer"]
         DAG["Topological DAG Scheduler"]
         Exec["Physical Execution & State Backend"]
@@ -91,17 +91,17 @@ Modern enterprise lakehouses implement **Attribute-Based Access Control (ABAC)**
 ```mermaid
 flowchart LR
     subgraph TagAssignment["Governance Tagging Layer"]
-        Tags["Columns tagged: 'pii' = 'high_risk'"]
+        Tags["Columns tagged: 'pii' =<br/>'high_risk'"]
     end
 
     subgraph PolicyEngine["Centralized Policy Enforcement Engine"]
-        ABAC["Tag Policy: Redact if not in 'data_stewards'"]
-        CleanRoom["Clean Room: Enforce k-anonymity aggregation (k >= 50)"]
+        ABAC["Tag Policy: Redact if not in<br/>'data_stewards'"]
+        CleanRoom["Clean Room: Enforce k-anonymity<br/>aggregation (k &gt;= 50)"]
     end
 
     subgraph Profiling["Continuous Observability"]
-        DriftMonitor["Lakehouse Monitor: Data & Concept Drift Profiler"]
-        SystemTable["System Tables: system.lakehouse_monitoring"]
+        DriftMonitor["Lakehouse Monitor: Data & Concept<br/>Drift Profiler"]
+        SystemTable["System Tables:<br/>system.lakehouse_monitoring"]
     end
 
     Tags --> ABAC --> CleanRoom

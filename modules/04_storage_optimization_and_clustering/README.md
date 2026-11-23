@@ -24,18 +24,18 @@ Data layout optimization determines the efficiency of query engines. Lakehouses 
 flowchart LR
     subgraph LegacyPartitioning["Era 1: Hive Partitioning (Fragile)"]
         HP1["/region=EMEA/year=2026/date=11-20/"]
-        HP2["1,000,000 directories, tiny 50KB files"]
+        HP2["1,000,000 directories, tiny 50KB<br/>files"]
     end
 
     subgraph ZOrderEra["Era 2: Z-Order Indexing (Destructive)"]
-        ZO1["OPTIMIZE table ZORDER BY (user_id, date)"]
-        ZO2["Expensive full table rewrite each night"]
+        ZO1["OPTIMIZE table ZORDER BY (user_id,<br/>date)"]
+        ZO2["Expensive full table rewrite each<br/>night"]
     end
 
     subgraph LiquidEra["Era 3: Liquid Clustering (Incremental)"]
-        LQ1["CLUSTER BY (customer_id, event_date)"]
-        LQ2["Incremental bin clustering at write time"]
-        LQ3["No directory hierarchy; zero rewrite penalty"]
+        LQ1["CLUSTER BY (customer_id,<br/>event_date)"]
+        LQ2["Incremental bin clustering at<br/>write time"]
+        LQ3["No directory hierarchy; zero<br/>rewrite penalty"]
     end
 
     LegacyPartitioning --> ZOrderEra --> LiquidEra

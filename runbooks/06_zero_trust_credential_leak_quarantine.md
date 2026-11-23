@@ -11,10 +11,10 @@
 
 ```mermaid
 flowchart TD
-    Alert["SEV-1 Alert: Storage Account Key / SAS Token Leaked Publicly"] --> RotateKey["Step 1: Immediately Regenerate Secondary Storage Key"]
-    RotateKey --> SwapApps["Step 2: Swap Applications to New Key"]
-    SwapApps --> InvalidatePrimary["Step 3: Regenerate Leaked Primary Storage Key"]
-    InvalidatePrimary --> RevokeSAS["Step 4: Invalidate All Active User Delegation SAS Tokens"]
+    Alert["SEV-1 Alert: Storage Account Key /<br/>SAS Token Leaked Publicly"] --> RotateKey["Step 1: Immediately Regenerate<br/>Secondary Storage Key"]
+    RotateKey --> SwapApps["Step 2: Swap Applications to New<br/>Key"]
+    SwapApps --> InvalidatePrimary["Step 3: Regenerate Leaked Primary<br/>Storage Key"]
+    InvalidatePrimary --> RevokeSAS["Step 4: Invalidate All Active User<br/>Delegation SAS Tokens"]
 ```
 
 ---

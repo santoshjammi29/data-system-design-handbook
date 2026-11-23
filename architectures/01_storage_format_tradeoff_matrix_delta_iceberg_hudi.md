@@ -27,7 +27,7 @@ flowchart TD
         S2["Contract & Metadata Registry"]
     end
 
-    subgraph Engine["2. Core Execution Engine (Data Systems Design & Enterprise Architecture)"]
+    subgraph Engine["2. Core Execution Engine (Data Systems Design<br/>& Enterprise Architecture)"]
         P1["Parser & Semantic Analyzer"]
         DAG["Topological DAG Scheduler"]
         Exec["Physical Execution & State Backend"]
@@ -102,7 +102,7 @@ flowchart TD
     end
 
     subgraph UniFormAsync["UniForm Metadata Synthesis"]
-        IcebergSync["Iceberg Metadata Tree (metadata.json)"]
+        IcebergSync["Iceberg Metadata Tree<br/>(metadata.json)"]
         HudiSync["Hudi Timeline (.hoodie)"]
     end
 

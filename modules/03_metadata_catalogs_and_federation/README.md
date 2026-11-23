@@ -19,21 +19,21 @@ Enterprise lakehouses must federate access across hybrid and multi-cloud environ
 
 ```mermaid
 flowchart TD
-    subgraph CentralCatalog["Central Governed Catalog (Unity Catalog / Apache Polaris)"]
-        UC["Unity Catalog / Polaris REST Catalog\n(Unified 3-Tier Namespace: catalog.schema.table)"]
-        ACLS["Fine-Grained Column Masking & Row Filters"]
-        LINEAGE["Automated Lineage & Audit Telemetry"]
+    subgraph CentralCatalog["Central Governed Catalog (Unity Catalog /<br/>Apache Polaris)"]
+        UC["Unity Catalog / Polaris REST<br/>Catalog<br/>(Unified 3-Tier Namespace:<br/>catalog.schema.table)"]
+        ACLS["Fine-Grained Column Masking & Row<br/>Filters"]
+        LINEAGE["Automated Lineage & Audit<br/>Telemetry"]
     end
 
     subgraph ComputeEngines["Multi-Engine Query Federation (Zero-Copy)"]
         DBX["Databricks (Photon Engine)"]
-        SNOW["Snowflake (Iceberg External Volume)"]
-        BQ["Google BigQuery (BigLake Iceberg Table)"]
-        FABRIC["Microsoft Fabric (OneLake Shortcut)"]
+        SNOW["Snowflake (Iceberg External<br/>Volume)"]
+        BQ["Google BigQuery (BigLake Iceberg<br/>Table)"]
+        FABRIC["Microsoft Fabric (OneLake<br/>Shortcut)"]
     end
 
     subgraph PhysicalStorage["Single Source of Truth (Cloud Storage)"]
-        STORAGE["ADLS Gen2 / AWS S3 / GCS\n(Parquet Data + UniForm Metadata)"]
+        STORAGE["ADLS Gen2 / AWS S3 / GCS<br/>(Parquet Data + UniForm Metadata)"]
     end
 
     UC --> ACLS

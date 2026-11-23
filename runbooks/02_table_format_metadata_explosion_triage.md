@@ -11,13 +11,13 @@
 
 ```mermaid
 flowchart TD
-    Alert["SEV-2 Alert: Spark Query Planning Exceeds 60s (Metadata Bloat)"] --> CountMetadata["Step 1: Count Commit Files in _delta_log or metadata/"]
-    CountMetadata --> ThresholdCheck{"Commit File Count > 10,000?"}
+    Alert["SEV-2 Alert: Spark Query Planning<br/>Exceeds 60s (Metadata Bloat)"] --> CountMetadata["Step 1: Count Commit Files in<br/>_delta_log or metadata/"]
+    CountMetadata --> ThresholdCheck{"Commit File Count &gt; 10,000?"}
 
     ThresholdCheck -->|Yes| CompactionNeeded["Metadata File Explosion Detected"]
     ThresholdCheck -->|No| CheckDriverMemory["Check Driver Heap & GC Pauses"]
 
-    CompactionNeeded --> ForceCheckpoint["Force Multi-Part Checkpoint Generation"]
+    CompactionNeeded --> ForceCheckpoint["Force Multi-Part Checkpoint<br/>Generation"]
     ForceCheckpoint --> RunVacuum["Execute VACUUM RETAIN 168 HOURS"]
     RunVacuum --> OptimizeBinPack["Execute OPTIMIZE ZORDER BY"]
 ```

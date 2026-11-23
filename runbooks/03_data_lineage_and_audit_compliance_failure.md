@@ -11,13 +11,13 @@
 
 ```mermaid
 flowchart TD
-    Alert["SEV-2 Alert: Broken OpenLineage Telemetry / Audit Lineage Gap"] --> TestEndpoint["Step 1: Test OpenLineage Backend Endpoint Reachability"]
+    Alert["SEV-2 Alert: Broken OpenLineage<br/>Telemetry / Audit Lineage Gap"] --> TestEndpoint["Step 1: Test OpenLineage Backend<br/>Endpoint Reachability"]
     TestEndpoint --> Reachable{"HTTP 200 OK?"}
 
-    Reachable -->|"No: Connection Refused"| RestoreBackend["Restart Marquez / Purview Ingestion Service"]
-    Reachable -->|"Yes: Dropping Facets"| CheckSparkListener["Inspect Spark OpenLineage SparkListener Config"]
+    Reachable -->|"No: Connection Refused"| RestoreBackend["Restart Marquez / Purview<br/>Ingestion Service"]
+    Reachable -->|"Yes: Dropping Facets"| CheckSparkListener["Inspect Spark OpenLineage<br/>SparkListener Config"]
 
-    RestoreBackend --> ResendRunEvents["Replay Missed RunEvents from Pipeline Run Logs"]
+    RestoreBackend --> ResendRunEvents["Replay Missed RunEvents from<br/>Pipeline Run Logs"]
     CheckSparkListener --> PatchListener["Update openlineage-spark Jar & URL"]
 ```
 

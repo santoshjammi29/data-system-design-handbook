@@ -22,6 +22,6 @@ graph LR
         G1["fct_revenue_daily"]
         G2["dim_customer_retention"]
     end
-    Bronze -->|Schema Validation & Dedup| Silver
-    Silver -->|Dimensional Modeling & KPI Rollups| Gold
+    Bronze -->|"Schema Validation & Dedup"| Silver
+    Silver -->|"Dimensional Modeling & KPI<br/>Rollups"| Gold
 ```

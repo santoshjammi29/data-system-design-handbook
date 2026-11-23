@@ -11,9 +11,9 @@
 
 ```mermaid
 flowchart TD
-    Alert["SEV-1 Alert: Production SLA Pipeline Queued Behind Ad-Hoc Query"] --> IdentifyRogue["Step 1: Query Active Queries by Runtime & Memory Usage"]
-    IdentifyRogue --> KillRogue["Step 2: Terminate Runaway Query Immediately"]
-    KillRogue --> IsolateWorkloads["Step 3: Route Ad-Hoc Analytics to Dedicated Warehouse"]
+    Alert["SEV-1 Alert: Production SLA<br/>Pipeline Queued Behind Ad-Hoc<br/>Query"] --> IdentifyRogue["Step 1: Query Active Queries by<br/>Runtime & Memory Usage"]
+    IdentifyRogue --> KillRogue["Step 2: Terminate Runaway Query<br/>Immediately"]
+    KillRogue --> IsolateWorkloads["Step 3: Route Ad-Hoc Analytics to<br/>Dedicated Warehouse"]
 ```
 
 ---

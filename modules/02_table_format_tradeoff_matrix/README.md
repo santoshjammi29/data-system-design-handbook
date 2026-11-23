@@ -26,17 +26,17 @@ flowchart TD
     end
 
     subgraph DeltaArch["Delta Lake 3.3 (Forward Commit Log)"]
-        DL_JSON["_delta_log/00000.json\n(Forward ACID Transactions)"]
-        DL_CP["_delta_log/00010.checkpoint.parquet\n(Compacted Metadata)"]
-        DL_DV["Deletion Vectors (.bin)\n(Row-Level Bitmaps)"]
-        DL_UNIFORM["Universal Format (UniForm)\n(Translates to Iceberg metadata)"]
+        DL_JSON["_delta_log/00000.json<br/>(Forward ACID Transactions)"]
+        DL_CP["_delta_log/00010.checkpoint.parquet<br/>(Compacted Metadata)"]
+        DL_DV["Deletion Vectors (.bin)<br/>(Row-Level Bitmaps)"]
+        DL_UNIFORM["Universal Format (UniForm)<br/>(Translates to Iceberg metadata)"]
     end
 
     subgraph IcebergArch["Apache Iceberg v2/v3 (Hierarchical Tree)"]
         IC_CAT["Catalog (REST / Polaris / Nessie)"]
-        IC_SNAP["version-hint.text -> vN.metadata.json\n(Snapshots Array)"]
+        IC_SNAP["version-hint.text -><br/>vN.metadata.json<br/>(Snapshots Array)"]
         IC_ML["Manifest List (Avros)"]
-        IC_M["Manifest Files (Data Files + Min/Max Bounds)"]
+        IC_M["Manifest Files (Data Files +<br/>Min/Max Bounds)"]
         IC_DEL["Positional & Equality Delete Files"]
     end
 
@@ -100,13 +100,13 @@ TBLPROPERTIES (
 
 ```mermaid
 flowchart TD
-    Q1{"Is your primary compute engine Databricks / Spark?"}
-    Q1 -- Yes --> Q2{"Do non-Spark engines (Snowflake, BigQuery, Athena) query this table directly?"}
-    Q1 -- No --> Q3{"Is multi-engine write concurrency (e.g. Flink streaming + Trino batch) required?"}
+    Q1{"Is your primary compute engine<br/>Databricks / Spark?"}
+    Q1 -- Yes --> Q2{"Do non-Spark engines (Snowflake,<br/>BigQuery, Athena) query this table<br/>directly?"}
+    Q1 -- No --> Q3{"Is multi-engine write concurrency<br/>(e.g. Flink streaming + Trino<br/>batch) required?"}
 
-    Q2 -- Yes --> A1["Use Delta Lake 3.3 with UniForm enabled\n(Fast Databricks writes + zero-copy Iceberg reads)"]
-    Q2 -- No --> A2["Use Native Delta Lake with Liquid Clustering & Deletion Vectors"]
+    Q2 -- Yes --> A1["Use Delta Lake 3.3 with UniForm<br/>enabled<br/>(Fast Databricks writes +<br/>zero-copy Iceberg reads)"]
+    Q2 -- No --> A2["Use Native Delta Lake with Liquid<br/>Clustering & Deletion Vectors"]
 
-    Q3 -- Yes --> A3["Use Apache Iceberg with REST Catalog / Polaris\n(Universal multi-engine ACID writes)"]
-    Q3 -- No --> A4["Use Apache Iceberg or Delta Lake based on catalog alignment"]
+    Q3 -- Yes --> A3["Use Apache Iceberg with REST<br/>Catalog / Polaris<br/>(Universal multi-engine ACID<br/>writes)"]
+    Q3 -- No --> A4["Use Apache Iceberg or Delta Lake<br/>based on catalog alignment"]
 ```
