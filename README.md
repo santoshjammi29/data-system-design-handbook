@@ -17,6 +17,209 @@
 
 ---
 
+## 🎯 Overview & Mission
+
+Modern enterprise data systems require rigorous operational governance, predictable failure recovery, deterministic schemas, and observable pipeline execution.
+
+This repository provides **battle-tested production specifications**:
+- **4 Deep-Dive Architectural Blueprints**: In-depth engine mechanics, state stores, and Mermaid diagrams.
+- **6 Production Incident Disaster Recovery Runbooks**: SEV-1 and SEV-2 playbooks with Emergency Decision Trees.
+- **4-Tier Progressive Interview Matrix & 50 Flashcards**: Level 100 to Level 400 questions and active recall deck.
+- **52 Whiteboard Blueprints**: Architectural infographics mirrored under `assets/whiteboards/`.
+- **Interactive Terminal Shell**: Instant search and study directly from the terminal via `python scripts/interactive_shell.py`.
+
+---
+
+## 🚀 Quickstart & Setup
+
+Set up your local Data System Design environment and run validation in under 60 seconds:
+
+```bash
+# 1. Clone repository
+git clone https://github.com/santoshjammi29/data-system-design-handbook.git
+cd data-system-design-handbook
+
+# 2. Set up virtual environment
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+
+# 3. Explore system designs, trade-offs, and runbooks via CLI
+python3 scripts/interactive_shell.py --list
+python3 scripts/run_tests.py
+```
+
+---
+
+## 💻 Interactive CLI Explorer
+
+Explore architectures, runbooks, and interview guides directly from your terminal:
+
+```bash
+# Browse catalog
+python scripts/interactive_shell.py --list
+python scripts/interactive_shell.py --runbooks
+python scripts/interactive_shell.py --architectures
+python scripts/interactive_shell.py --interview
+python scripts/interactive_shell.py --ecosystem
+
+# Run self-contained test suite
+python scripts/run_tests.py
+```
+
+---
+
+## 🏛️ Platform Architecture
+
+```mermaid
+flowchart LR
+    A["Raw Ingestion & Contracts"] --> B["Processing & State Machine"]
+    B --> C["Validation & Quality Gates"]
+    C --> D["Storage & Lakehouse ACID Sinks"]
+    D --> E["Lineage, Governance & Telemetry"]
+```
+
+---
+
+## 🖼️ Master Whiteboard Architecture Blueprints
+
+The repository includes **52 publication-grade architectural whiteboard blueprints** mirrored under [`assets/whiteboards/`](assets/whiteboards) and cataloged with comprehensive multi-persona breakdowns, failure modes, and engine internals in [`docs/whiteboard_diagrams/README.md`](docs/whiteboard_diagrams/README.md).
+
+- 🖼️ **[Master Whiteboard Blueprints Hub](docs/whiteboard_diagrams/handbook_whiteboard_blueprints.md)**: Complete whiteboard architecture blueprints with storage vs. compute, control vs. data planes, memory tiers, and failure modes.
+- 📊 **[Spark Architecture & Tuning Cheatsheet](assets/whiteboards/spark_architecture_catalyst_cheatsheet.jpg)**: High-resolution visual cheatsheet covering cluster topology, Catalyst compiler phases, and memory tiers.
+- 🔀 **[Join Strategies Decision Matrix](assets/whiteboards/spark_join_strategies_decision_matrix.jpg)**: Visual flowchart and decision tree for distributed joins and broadcast thresholds.
+- ⚡ **[Skew & Memory Spill Triage](assets/whiteboards/spark_performance_skew_spill_triage.jpg)**: Step-by-step diagnostic workflow for data skew, spill to disk, and OOM triage.
+
+### 📐 Visual Blueprints Showcase
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="docs/whiteboard_diagrams/README.md#open-table-formats-lakehouse">
+        <img src="assets/whiteboards/open_table_formats_lakehouse_architecture.webp" alt="Open Table Formats Blueprint: Lakehouse Storage Engines" width="100%" />
+      </a>
+      <br><strong>Open Table Formats Blueprint: Lakehouse Storage Engines</strong><br>
+      <em>Comparative architecture of Delta Lake, Apache Iceberg, and Apache Hudi storage layers.</em>
+    </td>
+    <td width="50%" valign="top">
+      <a href="docs/whiteboard_diagrams/README.md#delta-lake-under-the-hood">
+        <img src="assets/whiteboards/delta_lake_mechanism.webp" alt="How Delta Lake Works Under the Hood" width="100%" />
+      </a>
+      <br><strong>How Delta Lake Works Under the Hood</strong><br>
+      <em>Append-only JSON commit log, snapshot isolation, checkpoints, and time travel mechanisms.</em>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="docs/whiteboard_diagrams/README.md#apache-iceberg-open-table-format">
+        <img src="assets/whiteboards/apache_iceberg_open_table_format.webp" alt="Apache Iceberg Open Table Format Mechanics" width="100%" />
+      </a>
+      <br><strong>Apache Iceberg Open Table Format Mechanics</strong><br>
+      <em>Snapshot trees, manifest lists, manifest files, and hidden partitioning.</em>
+    </td>
+    <td width="50%" valign="top">
+      <a href="docs/whiteboard_diagrams/README.md#delta-vs-iceberg-architecture">
+        <img src="assets/whiteboards/delta_lake_vs_iceberg_architecture.webp" alt="Delta Lake vs. Apache Iceberg Storage & Metadata Architecture" width="100%" />
+      </a>
+      <br><strong>Delta Lake vs. Apache Iceberg Storage & Metadata Architecture</strong><br>
+      <em>Linear commit log vs hierarchical tree metadata, concurrency, and delete mechanics.</em>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="docs/whiteboard_diagrams/README.md#lakehouse-acid-concurrency">
+        <img src="assets/whiteboards/lakehouse_acid_concurrency.webp" alt="Lakehouse ACID Concurrency & Write Conflict Resolution Matrix" width="100%" />
+      </a>
+      <br><strong>Lakehouse ACID Concurrency & Write Conflict Resolution Matrix</strong><br>
+      <em>Optimistic concurrency control, commit conflict detection, and write serialization.</em>
+    </td>
+    <td width="50%" valign="top">
+      <a href="docs/whiteboard_diagrams/README.md#data-mesh-enterprise-architecture">
+        <img src="assets/whiteboards/data_mesh_enterprise_architecture.webp" alt="Enterprise Data Mesh: Decentralized Domains & Data Products" width="100%" />
+      </a>
+      <br><strong>Enterprise Data Mesh: Decentralized Domains & Data Products</strong><br>
+      <em>Decentralized domain ownership, self-serve data infrastructure, and federated governance.</em>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="docs/whiteboard_diagrams/README.md#lakehouse-bcdr-failover">
+        <img src="assets/whiteboards/lakehouse_bcdr_failover_architecture.webp" alt="Lakehouse Disaster Recovery (BCDR) Cross-Region Failover & Split-Brain Prevention" width="100%" />
+      </a>
+      <br><strong>Lakehouse Disaster Recovery (BCDR) Cross-Region Failover & Split-Brain Prevention</strong><br>
+      <em>Active-passive storage replication, DNS failover routing, and split-brain prevention.</em>
+    </td>
+    <td width="50%" valign="top">
+      <a href="docs/whiteboard_diagrams/README.md#lakehouse-access-masking-lifecycle">
+        <img src="assets/whiteboards/lakehouse_access_masking_lifecycle_architecture.webp" alt="Lakehouse Fine-Grained Access Control, Dynamic Masking & Entra/ABAC Enforcement" width="100%" />
+      </a>
+      <br><strong>Lakehouse Fine-Grained Access Control, Dynamic Masking & Entra/ABAC Enforcement</strong><br>
+      <em>Row-level security, column-level masking, and attribute-based access control.</em>
+    </td>
+  </tr>
+</table>
+
+> 🔍 **Explore all 52 blueprints with 5-persona breakdowns, failure modes, and engine internals in [docs/whiteboard_diagrams/README.md](docs/whiteboard_diagrams/README.md)**.
+
+## 📦 Production Curriculum Modules
+
+| Module | Title & Focus | Key Deliverables & Code |
+| :---: | :--- | :--- |
+| **01** | **[Enterprise Lakehouse & Medallion Design](modules/01_lakehouse_and_medallion_architecture/README.md)** | Bronze raw append, Silver conformed deduplicated, Gold dimensional marts, ACID transaction log design |
+| **02** | **[Table Format Matrix (Delta vs Iceberg vs Hudi)](modules/02_table_format_tradeoff_matrix/README.md)** | Metadata tree structures, CoW vs RoW/MoR, deletion vectors, catalog independence benchmarks |
+| **03** | **[Open Metadata Catalogs & Multi-Engine Access](modules/03_metadata_catalogs_and_federation/README.md)** | Iceberg REST catalog OpenAPI, Unity Catalog, Project Nessie Git-for-data, credential vending |
+| **04** | **[Storage Layout Optimization & Clustering](modules/04_storage_optimization_and_clustering/README.md)** | Bin-packing, Z-Order curves, Liquid Clustering, Deletion Vectors, VACUUM safety windows |
+| **05** | **[High-Throughput Batch Topologies & CDF](modules/05_high_throughput_batch_and_cdf/README.md)** | Change Data Feed (CDF), incremental downstream processing, watermark-driven batch backfills |
+| **06** | **[Sub-Minute Streaming Lakehouse Ingestion](modules/06_realtime_event_driven_lakehouse/README.md)** | Latency vs cost curves, micro-batch vs continuous ingestion, automated small-file compaction |
+| **07** | **[Data Mesh Architecture & Data Contracts](modules/07_data_mesh_domain_decomposition/README.md)** | Domain ownership, data products, self-serve infrastructure, declarative contract specification |
+| **08** | **[Zero-Trust Security, ABAC & Column Masking](modules/08_zero_trust_security_and_governance/README.md)** | NIST SP 800-207 Zero Trust, dynamic column masking, row-level filters, end-to-end lineage |
+| **09** | **[Multi-Region Disaster Recovery (RTO < 1h, RPO < 15m)](modules/09_multicloud_and_disaster_recovery/README.md)** | Active-active vs warm standby, cross-region object replication, split-brain avoidance leases |
+| **10** | **[FinOps & Big Data Cost Optimization](modules/10_finops_and_cost_optimization/README.md)** | Cost attribution tagging, auto-termination policies, spot fleet bidding, storage lifecycle tiering |
+
+---
+
+## 🏛️ Architectural Deep Dives
+
+Four production-tested architectural specifications located under `architectures/`:
+
+| Spec ID | Document Title | Target Level | Core Architectural Focus |
+| :---: | :--- | :---: | :--- |
+| **01** | **[Open Table Format Architecture: Delta vs. Iceberg vs. Hudi](architectures/01_storage_format_tradeoff_matrix_delta_iceberg_hudi.md)** | `Level 300-400` | Metadata trees, commit protocols, deletion vectors, and catalog independence. |
+| **02** | **[Data Mesh Domain Decomposition & Data Product Contracts](architectures/02_data_mesh_domain_decomposition_and_contracts.md)** | `Level 300-400` | Bounded contexts, federated computational governance, and zero-trust data sharing. |
+| **03** | **[Global Active-Active Lakehouse Multi-Region Replication](architectures/03_global_active_active_lakehouse_replication.md)** | `Level 300-400` | Conflict detection, eventual consistency, object store replication, and BCDR RPO/RTO. |
+| **04** | **[Zero-Trust Lakehouse Security & Data Perimeter Architecture](architectures/04_zero_trust_enterprise_lakehouse_security.md)** | `Level 300-400` | Attribute-Based Access Control (ABAC), dynamic column masking, and clean room enclaves. |
+
+---
+
+## 🚨 Production Incident Runbooks
+
+Six operational disaster recovery runbooks located under `runbooks/`:
+
+| Runbook ID | Title & Direct Link | Severity | Root Cause & Remediation Focus |
+| :---: | :--- | :---: | :--- |
+| **01** | **[Cross-Region Split-Brain State & Conflict Resolution](runbooks/01_cross_region_split_brain_conflict_resolution.md)** | `SEV-1` | Resolve divergent commits across cloud regions, reconcile delta logs, and re-establish primary. |
+| **02** | **[Lakehouse Table Format Metadata Tree Explosion](runbooks/02_table_format_metadata_explosion_triage.md)** | `SEV-2` | Compacting millions of small manifest files and snapshots causing query planning timeouts. |
+| **03** | **[Regulatory Audit Failure & Data Lineage Gap Triage](runbooks/03_data_lineage_and_audit_compliance_failure.md)** | `SEV-1` | Perform forensic tracking of GDPR right-to-be-forgotten deletion chains across lake tiers. |
+| **04** | **[Multi-Tenant Resource Queue Starvation & Noisy Neighbors](runbooks/04_multitenant_noisy_neighbor_starvation.md)** | `SEV-2` | Diagnose Fair Scheduler priority inversion, CPU/IOPS saturation, and quota throttling. |
+| **05** | **[Centralized Catalog Loss & Disaster Recovery Runbook](runbooks/05_lakehouse_catalog_lockout_and_disaster_recovery.md)** | `SEV-1` | Recover from metastore failure using raw storage metadata files and catalog failover. |
+| **06** | **[Lakehouse Credential Compromise & Fast Quarantine](runbooks/06_zero_trust_credential_leak_quarantine.md)** | `SEV-1` | Revoke compromised cloud storage keys, invalidate active tokens, and rotate credentials. |
+
+---
+
+## 🎓 4-Tier Interview Preparation Matrix
+
+Comprehensive technical interview guides and flashcard deck located under `interview/`:
+
+| Tier | Role Target | Core Focus Areas | Direct Link |
+| :---: | :--- | :--- | :---: |
+| **Tier 1** | **Senior Data Engineer** | Scalable batch/stream architectures, Medallion design, data modeling tradeoffs. | [`01_junior.md`](interview/01_senior_data_engineer.md) |
+| **Tier 2** | **Lead Lakehouse Architect** | Open table format selection, multi-engine catalogs, governance, and FinOps. | [`02_mid_level.md`](interview/02_lead_lakehouse_architect.md) |
+| **Tier 3** | **Principal Systems Architect** | Global multi-cloud lakehouses, data mesh contracts, BCDR RPO/RTO calculations. | [`03_senior.md`](interview/03_principal_systems_architect.md) |
+| **Tier 4** | **Distinguished Enterprise Architect** | Organizational data strategies, executive alignment, compliance, and sovereignty. | [`04_staff.md`](interview/04_distinguished_enterprise_architect.md) |
+| **Deck** | **50 Rapid-Fire Flashcards** | 50 active recall questions and answers for technical mastery. | [`05_flashcards.md`](interview/05_flashcards_deck_50.md) |
+
+---
+
 ## 🧠 Core Curriculum Concepts & Topics (123 Topics Covered)
 
 > 💡 **Enterprise Knowledge Base Integration**: This repository implements **123 production topics** from the [Modern Data Engineering Systems Encyclopedia (921 Topics)](https://moderndataengineer.uk/concepts), grouped by **Relevant Functional Sections** and then by **Difficulty Level**. All sections are **collapsible and collapsed by default** for effortless navigation. Browse the full curriculum in [`topics/README.md`](topics/README.md).
@@ -373,188 +576,6 @@
 </details>
 
 
-
-## 🎯 Overview & Mission
-
-Modern enterprise data systems require rigorous operational governance, predictable failure recovery, deterministic schemas, and observable pipeline execution.
-
-This repository provides **battle-tested production specifications**:
-- **4 Deep-Dive Architectural Blueprints**: In-depth engine mechanics, state stores, and Mermaid diagrams.
-- **6 Production Incident Disaster Recovery Runbooks**: SEV-1 and SEV-2 playbooks with Emergency Decision Trees.
-- **4-Tier Progressive Interview Matrix & 50 Flashcards**: Level 100 to Level 400 questions and active recall deck.
-- **52 Whiteboard Blueprints**: Architectural infographics mirrored under `assets/whiteboards/`.
-- **Interactive Terminal Shell**: Instant search and study directly from the terminal via `python scripts/interactive_shell.py`.
-
----
-
-## 🏛️ Platform Architecture
-
-```mermaid
-flowchart LR
-    A["Raw Ingestion & Contracts"] --> B["Processing & State Machine"]
-    B --> C["Validation & Quality Gates"]
-    C --> D["Storage & Lakehouse ACID Sinks"]
-    D --> E["Lineage, Governance & Telemetry"]
-```
-
----
-
-## 🖼️ Master Whiteboard Architecture Blueprints
-
-The repository includes **52 publication-grade architectural whiteboard blueprints** mirrored under [`assets/whiteboards/`](assets/whiteboards) and cataloged with comprehensive multi-persona breakdowns, failure modes, and engine internals in [`docs/whiteboard_diagrams/README.md`](docs/whiteboard_diagrams/README.md).
-
-- 🖼️ **[Master Whiteboard Blueprints Hub](docs/whiteboard_diagrams/handbook_whiteboard_blueprints.md)**: Complete whiteboard architecture blueprints with storage vs. compute, control vs. data planes, memory tiers, and failure modes.
-- 📊 **[Spark Architecture & Tuning Cheatsheet](assets/whiteboards/spark_architecture_catalyst_cheatsheet.jpg)**: High-resolution visual cheatsheet covering cluster topology, Catalyst compiler phases, and memory tiers.
-- 🔀 **[Join Strategies Decision Matrix](assets/whiteboards/spark_join_strategies_decision_matrix.jpg)**: Visual flowchart and decision tree for distributed joins and broadcast thresholds.
-- ⚡ **[Skew & Memory Spill Triage](assets/whiteboards/spark_performance_skew_spill_triage.jpg)**: Step-by-step diagnostic workflow for data skew, spill to disk, and OOM triage.
-
-### 📐 Visual Blueprints Showcase
-
-<table>
-  <tr>
-    <td width="50%" valign="top">
-      <a href="docs/whiteboard_diagrams/README.md#open-table-formats-lakehouse">
-        <img src="assets/whiteboards/open_table_formats_lakehouse_architecture.webp" alt="Open Table Formats Blueprint: Lakehouse Storage Engines" width="100%" />
-      </a>
-      <br><strong>Open Table Formats Blueprint: Lakehouse Storage Engines</strong><br>
-      <em>Comparative architecture of Delta Lake, Apache Iceberg, and Apache Hudi storage layers.</em>
-    </td>
-    <td width="50%" valign="top">
-      <a href="docs/whiteboard_diagrams/README.md#delta-lake-under-the-hood">
-        <img src="assets/whiteboards/delta_lake_mechanism.webp" alt="How Delta Lake Works Under the Hood" width="100%" />
-      </a>
-      <br><strong>How Delta Lake Works Under the Hood</strong><br>
-      <em>Append-only JSON commit log, snapshot isolation, checkpoints, and time travel mechanisms.</em>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" valign="top">
-      <a href="docs/whiteboard_diagrams/README.md#apache-iceberg-open-table-format">
-        <img src="assets/whiteboards/apache_iceberg_open_table_format.webp" alt="Apache Iceberg Open Table Format Mechanics" width="100%" />
-      </a>
-      <br><strong>Apache Iceberg Open Table Format Mechanics</strong><br>
-      <em>Snapshot trees, manifest lists, manifest files, and hidden partitioning.</em>
-    </td>
-    <td width="50%" valign="top">
-      <a href="docs/whiteboard_diagrams/README.md#delta-vs-iceberg-architecture">
-        <img src="assets/whiteboards/delta_lake_vs_iceberg_architecture.webp" alt="Delta Lake vs. Apache Iceberg Storage & Metadata Architecture" width="100%" />
-      </a>
-      <br><strong>Delta Lake vs. Apache Iceberg Storage & Metadata Architecture</strong><br>
-      <em>Linear commit log vs hierarchical tree metadata, concurrency, and delete mechanics.</em>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" valign="top">
-      <a href="docs/whiteboard_diagrams/README.md#lakehouse-acid-concurrency">
-        <img src="assets/whiteboards/lakehouse_acid_concurrency.webp" alt="Lakehouse ACID Concurrency & Write Conflict Resolution Matrix" width="100%" />
-      </a>
-      <br><strong>Lakehouse ACID Concurrency & Write Conflict Resolution Matrix</strong><br>
-      <em>Optimistic concurrency control, commit conflict detection, and write serialization.</em>
-    </td>
-    <td width="50%" valign="top">
-      <a href="docs/whiteboard_diagrams/README.md#data-mesh-enterprise-architecture">
-        <img src="assets/whiteboards/data_mesh_enterprise_architecture.webp" alt="Enterprise Data Mesh: Decentralized Domains & Data Products" width="100%" />
-      </a>
-      <br><strong>Enterprise Data Mesh: Decentralized Domains & Data Products</strong><br>
-      <em>Decentralized domain ownership, self-serve data infrastructure, and federated governance.</em>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" valign="top">
-      <a href="docs/whiteboard_diagrams/README.md#lakehouse-bcdr-failover">
-        <img src="assets/whiteboards/lakehouse_bcdr_failover_architecture.webp" alt="Lakehouse Disaster Recovery (BCDR) Cross-Region Failover & Split-Brain Prevention" width="100%" />
-      </a>
-      <br><strong>Lakehouse Disaster Recovery (BCDR) Cross-Region Failover & Split-Brain Prevention</strong><br>
-      <em>Active-passive storage replication, DNS failover routing, and split-brain prevention.</em>
-    </td>
-    <td width="50%" valign="top">
-      <a href="docs/whiteboard_diagrams/README.md#lakehouse-access-masking-lifecycle">
-        <img src="assets/whiteboards/lakehouse_access_masking_lifecycle_architecture.webp" alt="Lakehouse Fine-Grained Access Control, Dynamic Masking & Entra/ABAC Enforcement" width="100%" />
-      </a>
-      <br><strong>Lakehouse Fine-Grained Access Control, Dynamic Masking & Entra/ABAC Enforcement</strong><br>
-      <em>Row-level security, column-level masking, and attribute-based access control.</em>
-    </td>
-  </tr>
-</table>
-
-> 🔍 **Explore all 52 blueprints with 5-persona breakdowns, failure modes, and engine internals in [docs/whiteboard_diagrams/README.md](docs/whiteboard_diagrams/README.md)**.
-
-## 💻 Interactive CLI Explorer
-
-Explore architectures, runbooks, and interview guides directly from your terminal:
-
-```bash
-# Browse catalog
-python scripts/interactive_shell.py --list
-python scripts/interactive_shell.py --runbooks
-python scripts/interactive_shell.py --architectures
-python scripts/interactive_shell.py --interview
-python scripts/interactive_shell.py --ecosystem
-
-# Run self-contained test suite
-python scripts/run_tests.py
-```
-
----
-
-## 📦 Production Curriculum Modules
-
-| Module | Title & Focus | Key Deliverables & Code |
-| :---: | :--- | :--- |
-| **01** | **[Enterprise Lakehouse & Medallion Design](modules/01_lakehouse_and_medallion_architecture/README.md)** | Bronze raw append, Silver conformed deduplicated, Gold dimensional marts, ACID transaction log design |
-| **02** | **[Table Format Matrix (Delta vs Iceberg vs Hudi)](modules/02_table_format_tradeoff_matrix/README.md)** | Metadata tree structures, CoW vs RoW/MoR, deletion vectors, catalog independence benchmarks |
-| **03** | **[Open Metadata Catalogs & Multi-Engine Access](modules/03_metadata_catalogs_and_federation/README.md)** | Iceberg REST catalog OpenAPI, Unity Catalog, Project Nessie Git-for-data, credential vending |
-| **04** | **[Storage Layout Optimization & Clustering](modules/04_storage_optimization_and_clustering/README.md)** | Bin-packing, Z-Order curves, Liquid Clustering, Deletion Vectors, VACUUM safety windows |
-| **05** | **[High-Throughput Batch Topologies & CDF](modules/05_high_throughput_batch_and_cdf/README.md)** | Change Data Feed (CDF), incremental downstream processing, watermark-driven batch backfills |
-| **06** | **[Sub-Minute Streaming Lakehouse Ingestion](modules/06_realtime_event_driven_lakehouse/README.md)** | Latency vs cost curves, micro-batch vs continuous ingestion, automated small-file compaction |
-| **07** | **[Data Mesh Architecture & Data Contracts](modules/07_data_mesh_domain_decomposition/README.md)** | Domain ownership, data products, self-serve infrastructure, declarative contract specification |
-| **08** | **[Zero-Trust Security, ABAC & Column Masking](modules/08_zero_trust_security_and_governance/README.md)** | NIST SP 800-207 Zero Trust, dynamic column masking, row-level filters, end-to-end lineage |
-| **09** | **[Multi-Region Disaster Recovery (RTO < 1h, RPO < 15m)](modules/09_multicloud_and_disaster_recovery/README.md)** | Active-active vs warm standby, cross-region object replication, split-brain avoidance leases |
-| **10** | **[FinOps & Big Data Cost Optimization](modules/10_finops_and_cost_optimization/README.md)** | Cost attribution tagging, auto-termination policies, spot fleet bidding, storage lifecycle tiering |
-
----
-
-## 🏛️ Architectural Deep Dives
-
-Four production-tested architectural specifications located under `architectures/`:
-
-| Spec ID | Document Title | Target Level | Core Architectural Focus |
-| :---: | :--- | :---: | :--- |
-| **01** | **[Open Table Format Architecture: Delta vs. Iceberg vs. Hudi](architectures/01_storage_format_tradeoff_matrix_delta_iceberg_hudi.md)** | `Level 300-400` | Metadata trees, commit protocols, deletion vectors, and catalog independence. |
-| **02** | **[Data Mesh Domain Decomposition & Data Product Contracts](architectures/02_data_mesh_domain_decomposition_and_contracts.md)** | `Level 300-400` | Bounded contexts, federated computational governance, and zero-trust data sharing. |
-| **03** | **[Global Active-Active Lakehouse Multi-Region Replication](architectures/03_global_active_active_lakehouse_replication.md)** | `Level 300-400` | Conflict detection, eventual consistency, object store replication, and BCDR RPO/RTO. |
-| **04** | **[Zero-Trust Lakehouse Security & Data Perimeter Architecture](architectures/04_zero_trust_enterprise_lakehouse_security.md)** | `Level 300-400` | Attribute-Based Access Control (ABAC), dynamic column masking, and clean room enclaves. |
-
----
-
-## 🚨 Production Incident Runbooks
-
-Six operational disaster recovery runbooks located under `runbooks/`:
-
-| Runbook ID | Title & Direct Link | Severity | Root Cause & Remediation Focus |
-| :---: | :--- | :---: | :--- |
-| **01** | **[Cross-Region Split-Brain State & Conflict Resolution](runbooks/01_cross_region_split_brain_conflict_resolution.md)** | `SEV-1` | Resolve divergent commits across cloud regions, reconcile delta logs, and re-establish primary. |
-| **02** | **[Lakehouse Table Format Metadata Tree Explosion](runbooks/02_table_format_metadata_explosion_triage.md)** | `SEV-2` | Compacting millions of small manifest files and snapshots causing query planning timeouts. |
-| **03** | **[Regulatory Audit Failure & Data Lineage Gap Triage](runbooks/03_data_lineage_and_audit_compliance_failure.md)** | `SEV-1` | Perform forensic tracking of GDPR right-to-be-forgotten deletion chains across lake tiers. |
-| **04** | **[Multi-Tenant Resource Queue Starvation & Noisy Neighbors](runbooks/04_multitenant_noisy_neighbor_starvation.md)** | `SEV-2` | Diagnose Fair Scheduler priority inversion, CPU/IOPS saturation, and quota throttling. |
-| **05** | **[Centralized Catalog Loss & Disaster Recovery Runbook](runbooks/05_lakehouse_catalog_lockout_and_disaster_recovery.md)** | `SEV-1` | Recover from metastore failure using raw storage metadata files and catalog failover. |
-| **06** | **[Lakehouse Credential Compromise & Fast Quarantine](runbooks/06_zero_trust_credential_leak_quarantine.md)** | `SEV-1` | Revoke compromised cloud storage keys, invalidate active tokens, and rotate credentials. |
-
----
-
-## 🎓 4-Tier Interview Preparation Matrix
-
-Comprehensive technical interview guides and flashcard deck located under `interview/`:
-
-| Tier | Role Target | Core Focus Areas | Direct Link |
-| :---: | :--- | :--- | :---: |
-| **Tier 1** | **Senior Data Engineer** | Scalable batch/stream architectures, Medallion design, data modeling tradeoffs. | [`01_junior.md`](interview/01_senior_data_engineer.md) |
-| **Tier 2** | **Lead Lakehouse Architect** | Open table format selection, multi-engine catalogs, governance, and FinOps. | [`02_mid_level.md`](interview/02_lead_lakehouse_architect.md) |
-| **Tier 3** | **Principal Systems Architect** | Global multi-cloud lakehouses, data mesh contracts, BCDR RPO/RTO calculations. | [`03_senior.md`](interview/03_principal_systems_architect.md) |
-| **Tier 4** | **Distinguished Enterprise Architect** | Organizational data strategies, executive alignment, compliance, and sovereignty. | [`04_staff.md`](interview/04_distinguished_enterprise_architect.md) |
-| **Deck** | **50 Rapid-Fire Flashcards** | 50 active recall questions and answers for technical mastery. | [`05_flashcards.md`](interview/05_flashcards_deck_50.md) |
-
----
 
 ## 🌐 Ecosystem Interlinking & Sister Repositories
 
