@@ -28,10 +28,10 @@ Progress: [ ] 0 / 21 Completed (0.0%)
 <details>
 <summary>&nbsp;&nbsp;<b>🔴 Tier 4: Production Hardening & Staff Architecture (Level 400) (4 Drills)</b></summary>
 
-- [ ] `data-system-design-handbook-doc-01_storage_format_tradeoff_matrix_delta_iceberg_hudi` — [Architecture: 01 Storage Format Tradeoff Matrix Delta Iceberg Hudi](architectures/01_storage_format_tradeoff_matrix_delta_iceberg_hudi.md) `L400`
-- [ ] `data-system-design-handbook-doc-02_data_mesh_domain_decomposition_and_contracts` — [Architecture: 02 Data Mesh Domain Decomposition And Contracts](architectures/02_data_mesh_domain_decomposition_and_contracts.md) `L400`
-- [ ] `data-system-design-handbook-doc-03_global_active_active_lakehouse_replication` — [Architecture: 03 Global Active Active Lakehouse Replication](architectures/03_global_active_active_lakehouse_replication.md) `L400`
-- [ ] `data-system-design-handbook-doc-04_zero_trust_enterprise_lakehouse_security` — [Architecture: 04 Zero Trust Enterprise Lakehouse Security](architectures/04_zero_trust_enterprise_lakehouse_security.md) `L400`
+- [ ] `data-system-design-handbook-doc-01_storage_format_tradeoff_matrix_delta_iceberg_hudi` — [Architecture: 01 Storage Format Tradeoff Matrix Delta Iceberg Hudi](../architectures/01_storage_format_tradeoff_matrix_delta_iceberg_hudi.md) `L400`
+- [ ] `data-system-design-handbook-doc-02_data_mesh_domain_decomposition_and_contracts` — [Architecture: 02 Data Mesh Domain Decomposition And Contracts](../architectures/02_data_mesh_domain_decomposition_and_contracts.md) `L400`
+- [ ] `data-system-design-handbook-doc-03_global_active_active_lakehouse_replication` — [Architecture: 03 Global Active Active Lakehouse Replication](../architectures/03_global_active_active_lakehouse_replication.md) `L400`
+- [ ] `data-system-design-handbook-doc-04_zero_trust_enterprise_lakehouse_security` — [Architecture: 04 Zero Trust Enterprise Lakehouse Security](../architectures/04_zero_trust_enterprise_lakehouse_security.md) `L400`
 
 </details>
 
@@ -64,12 +64,12 @@ Progress: [ ] 0 / 21 Completed (0.0%)
 <details>
 <summary>&nbsp;&nbsp;<b>🔴 Tier 4: Production Hardening & Staff Architecture (Level 400) (6 Drills)</b></summary>
 
-- [ ] `data-system-design-handbook-rb-01_cross_region_split_brain_conflict_resolution` — [Incident Runbook: Cross Region Split Brain Conflict Resolution](runbooks/01_cross_region_split_brain_conflict_resolution.md) `L400`
-- [ ] `data-system-design-handbook-rb-02_table_format_metadata_explosion_triage` — [Incident Runbook: Table Format Metadata Explosion Triage](runbooks/02_table_format_metadata_explosion_triage.md) `L400`
-- [ ] `data-system-design-handbook-rb-03_data_lineage_and_audit_compliance_failure` — [Incident Runbook: Data Lineage And Audit Compliance Failure](runbooks/03_data_lineage_and_audit_compliance_failure.md) `L400`
-- [ ] `data-system-design-handbook-rb-04_multitenant_noisy_neighbor_starvation` — [Incident Runbook: Multitenant Noisy Neighbor Starvation](runbooks/04_multitenant_noisy_neighbor_starvation.md) `L400`
-- [ ] `data-system-design-handbook-rb-05_lakehouse_catalog_lockout_and_disaster_recovery` — [Incident Runbook: Lakehouse Catalog Lockout And Disaster Recovery](runbooks/05_lakehouse_catalog_lockout_and_disaster_recovery.md) `L400`
-- [ ] `data-system-design-handbook-rb-06_zero_trust_credential_leak_quarantine` — [Incident Runbook: Zero Trust Credential Leak Quarantine](runbooks/06_zero_trust_credential_leak_quarantine.md) `L400`
+- [ ] `data-system-design-handbook-rb-01_cross_region_split_brain_conflict_resolution` — [Incident Runbook: Cross Region Split Brain Conflict Resolution](../runbooks/01_cross_region_split_brain_conflict_resolution.md) `L400`
+- [ ] `data-system-design-handbook-rb-02_table_format_metadata_explosion_triage` — [Incident Runbook: Table Format Metadata Explosion Triage](../runbooks/02_table_format_metadata_explosion_triage.md) `L400`
+- [ ] `data-system-design-handbook-rb-03_data_lineage_and_audit_compliance_failure` — [Incident Runbook: Data Lineage And Audit Compliance Failure](../runbooks/03_data_lineage_and_audit_compliance_failure.md) `L400`
+- [ ] `data-system-design-handbook-rb-04_multitenant_noisy_neighbor_starvation` — [Incident Runbook: Multitenant Noisy Neighbor Starvation](../runbooks/04_multitenant_noisy_neighbor_starvation.md) `L400`
+- [ ] `data-system-design-handbook-rb-05_lakehouse_catalog_lockout_and_disaster_recovery` — [Incident Runbook: Lakehouse Catalog Lockout And Disaster Recovery](../runbooks/05_lakehouse_catalog_lockout_and_disaster_recovery.md) `L400`
+- [ ] `data-system-design-handbook-rb-06_zero_trust_credential_leak_quarantine` — [Incident Runbook: Zero Trust Credential Leak Quarantine](../runbooks/06_zero_trust_credential_leak_quarantine.md) `L400`
 
 </details>
 
