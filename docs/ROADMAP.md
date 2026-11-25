@@ -43,16 +43,16 @@ Progress: [ ] 0 / 21 Completed (0.0%)
 <details>
 <summary>&nbsp;&nbsp;<b>🟡 Tier 2: Core Mechanics & Implementation (Level 200) (10 Drills)</b></summary>
 
-- [ ] `data-system-design-handbook-01_lakehouse_and_medallion_architecture` — [Lakehouse And Medallion Architecture](modules/01_lakehouse_and_medallion_architecture/README.md) `L200`
-- [ ] `data-system-design-handbook-02_table_format_tradeoff_matrix` — [Table Format Tradeoff Matrix](modules/02_table_format_tradeoff_matrix/README.md) `L200`
-- [ ] `data-system-design-handbook-03_metadata_catalogs_and_federation` — [Metadata Catalogs And Federation](modules/03_metadata_catalogs_and_federation/README.md) `L200`
-- [ ] `data-system-design-handbook-04_storage_optimization_and_clustering` — [Storage Optimization And Clustering](modules/04_storage_optimization_and_clustering/README.md) `L200`
-- [ ] `data-system-design-handbook-05_high_throughput_batch_and_cdf` — [High Throughput Batch And Cdf](modules/05_high_throughput_batch_and_cdf/README.md) `L200`
-- [ ] `data-system-design-handbook-06_realtime_event_driven_lakehouse` — [Realtime Event Driven Lakehouse](modules/06_realtime_event_driven_lakehouse/README.md) `L200`
-- [ ] `data-system-design-handbook-07_data_mesh_domain_decomposition` — [Data Mesh Domain Decomposition](modules/07_data_mesh_domain_decomposition/README.md) `L200`
-- [ ] `data-system-design-handbook-08_zero_trust_security_and_governance` — [Zero Trust Security And Governance](modules/08_zero_trust_security_and_governance/README.md) `L200`
-- [ ] `data-system-design-handbook-09_multicloud_and_disaster_recovery` — [Multicloud And Disaster Recovery](modules/09_multicloud_and_disaster_recovery/README.md) `L200`
-- [ ] `data-system-design-handbook-10_finops_and_cost_optimization` — [Finops And Cost Optimization](modules/10_finops_and_cost_optimization/README.md) `L200`
+- [ ] `data-system-design-handbook-01_lakehouse_and_medallion_architecture` — [Lakehouse And Medallion Architecture](../modules/01_lakehouse_and_medallion_architecture/README.md) `L200`
+- [ ] `data-system-design-handbook-02_table_format_tradeoff_matrix` — [Table Format Tradeoff Matrix](../modules/02_table_format_tradeoff_matrix/README.md) `L200`
+- [ ] `data-system-design-handbook-03_metadata_catalogs_and_federation` — [Metadata Catalogs And Federation](../modules/03_metadata_catalogs_and_federation/README.md) `L200`
+- [ ] `data-system-design-handbook-04_storage_optimization_and_clustering` — [Storage Optimization And Clustering](../modules/04_storage_optimization_and_clustering/README.md) `L200`
+- [ ] `data-system-design-handbook-05_high_throughput_batch_and_cdf` — [High Throughput Batch And Cdf](../modules/05_high_throughput_batch_and_cdf/README.md) `L200`
+- [ ] `data-system-design-handbook-06_realtime_event_driven_lakehouse` — [Realtime Event Driven Lakehouse](../modules/06_realtime_event_driven_lakehouse/README.md) `L200`
+- [ ] `data-system-design-handbook-07_data_mesh_domain_decomposition` — [Data Mesh Domain Decomposition](../modules/07_data_mesh_domain_decomposition/README.md) `L200`
+- [ ] `data-system-design-handbook-08_zero_trust_security_and_governance` — [Zero Trust Security And Governance](../modules/08_zero_trust_security_and_governance/README.md) `L200`
+- [ ] `data-system-design-handbook-09_multicloud_and_disaster_recovery` — [Multicloud And Disaster Recovery](../modules/09_multicloud_and_disaster_recovery/README.md) `L200`
+- [ ] `data-system-design-handbook-10_finops_and_cost_optimization` — [Finops And Cost Optimization](../modules/10_finops_and_cost_optimization/README.md) `L200`
 
 </details>
 
@@ -81,7 +81,7 @@ Progress: [ ] 0 / 21 Completed (0.0%)
 <details>
 <summary>&nbsp;&nbsp;<b>🟡 Tier 2: Core Mechanics & Implementation (Level 200) (1 Drills)</b></summary>
 
-- [ ] `data-system-design-handbook-curriculum-topics` — [Topics Directory: System Design Handbook](topics/README.md) `L200`
+- [ ] `data-system-design-handbook-curriculum-topics` — [Topics Directory: System Design Handbook](../topics/README.md) `L200`
 
 </details>
 
