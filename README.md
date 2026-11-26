@@ -24,7 +24,7 @@ Modern enterprise data systems require rigorous operational governance, predicta
 This repository provides **battle-tested production specifications**:
 - **4 Deep-Dive Architectural Blueprints**: In-depth engine mechanics, state stores, and Mermaid diagrams.
 - **6 Production Incident Disaster Recovery Runbooks**: SEV-1 and SEV-2 playbooks with Emergency Decision Trees.
-- **4-Tier Progressive Interview Matrix & 50 Flashcards**: Level 100 to Level 400 questions and active recall deck.
+- **4-Tier Progressive Interview Matrix & 50 Flashcards**: Level 1 to Level 4 questions and active recall deck.
 - **52 Whiteboard Blueprints**: Architectural infographics mirrored under `assets/whiteboards/`.
 - **Interactive Terminal Shell**: Instant search and study directly from the terminal via `python scripts/interactive_shell.py`.
 
@@ -184,10 +184,10 @@ Four production-tested architectural specifications located under `architectures
 
 | Spec ID | Document Title | Target Level | Core Architectural Focus |
 | :---: | :--- | :---: | :--- |
-| **01** | **[Open Table Format Architecture: Delta vs. Iceberg vs. Hudi](architectures/01_storage_format_tradeoff_matrix_delta_iceberg_hudi.md)** | `Level 300-400` | Metadata trees, commit protocols, deletion vectors, and catalog independence. |
-| **02** | **[Data Mesh Domain Decomposition & Data Product Contracts](architectures/02_data_mesh_domain_decomposition_and_contracts.md)** | `Level 300-400` | Bounded contexts, federated computational governance, and zero-trust data sharing. |
-| **03** | **[Global Active-Active Lakehouse Multi-Region Replication](architectures/03_global_active_active_lakehouse_replication.md)** | `Level 300-400` | Conflict detection, eventual consistency, object store replication, and BCDR RPO/RTO. |
-| **04** | **[Zero-Trust Lakehouse Security & Data Perimeter Architecture](architectures/04_zero_trust_enterprise_lakehouse_security.md)** | `Level 300-400` | Attribute-Based Access Control (ABAC), dynamic column masking, and clean room enclaves. |
+| **01** | **[Open Table Format Architecture: Delta vs. Iceberg vs. Hudi](architectures/01_storage_format_tradeoff_matrix_delta_iceberg_hudi.md)** | `Level 3-4` | Metadata trees, commit protocols, deletion vectors, and catalog independence. |
+| **02** | **[Data Mesh Domain Decomposition & Data Product Contracts](architectures/02_data_mesh_domain_decomposition_and_contracts.md)** | `Level 3-4` | Bounded contexts, federated computational governance, and zero-trust data sharing. |
+| **03** | **[Global Active-Active Lakehouse Multi-Region Replication](architectures/03_global_active_active_lakehouse_replication.md)** | `Level 3-4` | Conflict detection, eventual consistency, object store replication, and BCDR RPO/RTO. |
+| **04** | **[Zero-Trust Lakehouse Security & Data Perimeter Architecture](architectures/04_zero_trust_enterprise_lakehouse_security.md)** | `Level 3-4` | Attribute-Based Access Control (ABAC), dynamic column masking, and clean room enclaves. |
 
 ---
 
@@ -238,7 +238,7 @@ Comprehensive technical interview guides and flashcard deck located under `inter
 <summary>&nbsp;&nbsp;📂 <b>Section: Distributed Theorems & Trade-Offs (7 Topics)</b></summary>
 
 <details>
-<summary>&nbsp;&nbsp;&nbsp;&nbsp;🟢 Easy: <b>🟢 Easy (Level 100) (2 Topics)</b></summary>
+<summary>&nbsp;&nbsp;&nbsp;&nbsp;🟢 Easy: <b>🟢 Easy (Level 1) (2 Topics)</b></summary>
 
 | # | Topic / Concept | Level | Architectural Definition & Core Principle |
 |:---:|---|:---:|---|
@@ -248,7 +248,7 @@ Comprehensive technical interview guides and flashcard deck located under `inter
 </details>
 
 <details>
-<summary>&nbsp;&nbsp;&nbsp;&nbsp;🟡 Intermediate: <b>🟡 Intermediate (Level 200) (2 Topics)</b></summary>
+<summary>&nbsp;&nbsp;&nbsp;&nbsp;🟡 Intermediate: <b>🟡 Intermediate (Level 2) (2 Topics)</b></summary>
 
 | # | Topic / Concept | Level | Architectural Definition & Core Principle |
 |:---:|---|:---:|---|
@@ -258,7 +258,7 @@ Comprehensive technical interview guides and flashcard deck located under `inter
 </details>
 
 <details>
-<summary>&nbsp;&nbsp;&nbsp;&nbsp;🔴 Advanced: <b>🔴 Advanced (Level 300) (3 Topics)</b></summary>
+<summary>&nbsp;&nbsp;&nbsp;&nbsp;🔴 Advanced: <b>🔴 Advanced (Level 3) (3 Topics)</b></summary>
 
 | # | Topic / Concept | Level | Architectural Definition & Core Principle |
 |:---:|---|:---:|---|
@@ -274,7 +274,7 @@ Comprehensive technical interview guides and flashcard deck located under `inter
 <summary>&nbsp;&nbsp;📂 <b>Section: Fault Tolerance, Rate Limiting & High Availability (7 Topics)</b></summary>
 
 <details>
-<summary>&nbsp;&nbsp;&nbsp;&nbsp;🟡 Intermediate: <b>🟡 Intermediate (Level 200) (6 Topics)</b></summary>
+<summary>&nbsp;&nbsp;&nbsp;&nbsp;🟡 Intermediate: <b>🟡 Intermediate (Level 2) (6 Topics)</b></summary>
 
 | # | Topic / Concept | Level | Architectural Definition & Core Principle |
 |:---:|---|:---:|---|
@@ -288,7 +288,7 @@ Comprehensive technical interview guides and flashcard deck located under `inter
 </details>
 
 <details>
-<summary>&nbsp;&nbsp;&nbsp;&nbsp;🔴 Advanced: <b>🔴 Advanced (Level 300) (1 Topics)</b></summary>
+<summary>&nbsp;&nbsp;&nbsp;&nbsp;🔴 Advanced: <b>🔴 Advanced (Level 3) (1 Topics)</b></summary>
 
 | # | Topic / Concept | Level | Architectural Definition & Core Principle |
 |:---:|---|:---:|---|
@@ -302,7 +302,7 @@ Comprehensive technical interview guides and flashcard deck located under `inter
 <summary>&nbsp;&nbsp;📂 <b>Section: Caching Topologies & Synchronization (4 Topics)</b></summary>
 
 <details>
-<summary>&nbsp;&nbsp;&nbsp;&nbsp;🟢 Easy: <b>🟢 Easy (Level 100) (1 Topics)</b></summary>
+<summary>&nbsp;&nbsp;&nbsp;&nbsp;🟢 Easy: <b>🟢 Easy (Level 1) (1 Topics)</b></summary>
 
 | # | Topic / Concept | Level | Architectural Definition & Core Principle |
 |:---:|---|:---:|---|
@@ -311,7 +311,7 @@ Comprehensive technical interview guides and flashcard deck located under `inter
 </details>
 
 <details>
-<summary>&nbsp;&nbsp;&nbsp;&nbsp;🟡 Intermediate: <b>🟡 Intermediate (Level 200) (1 Topics)</b></summary>
+<summary>&nbsp;&nbsp;&nbsp;&nbsp;🟡 Intermediate: <b>🟡 Intermediate (Level 2) (1 Topics)</b></summary>
 
 | # | Topic / Concept | Level | Architectural Definition & Core Principle |
 |:---:|---|:---:|---|
@@ -320,7 +320,7 @@ Comprehensive technical interview guides and flashcard deck located under `inter
 </details>
 
 <details>
-<summary>&nbsp;&nbsp;&nbsp;&nbsp;🔴 Advanced: <b>🔴 Advanced (Level 300) (2 Topics)</b></summary>
+<summary>&nbsp;&nbsp;&nbsp;&nbsp;🔴 Advanced: <b>🔴 Advanced (Level 3) (2 Topics)</b></summary>
 
 | # | Topic / Concept | Level | Architectural Definition & Core Principle |
 |:---:|---|:---:|---|
@@ -335,7 +335,7 @@ Comprehensive technical interview guides and flashcard deck located under `inter
 <summary>&nbsp;&nbsp;📂 <b>Section: Event-Driven Topologies & Decoupled Ingestion (50 Topics)</b></summary>
 
 <details>
-<summary>&nbsp;&nbsp;&nbsp;&nbsp;🟢 Easy: <b>🟢 Easy (Level 100) (2 Topics)</b></summary>
+<summary>&nbsp;&nbsp;&nbsp;&nbsp;🟢 Easy: <b>🟢 Easy (Level 1) (2 Topics)</b></summary>
 
 | # | Topic / Concept | Level | Architectural Definition & Core Principle |
 |:---:|---|:---:|---|
@@ -345,7 +345,7 @@ Comprehensive technical interview guides and flashcard deck located under `inter
 </details>
 
 <details>
-<summary>&nbsp;&nbsp;&nbsp;&nbsp;🟡 Intermediate: <b>🟡 Intermediate (Level 200) (13 Topics)</b></summary>
+<summary>&nbsp;&nbsp;&nbsp;&nbsp;🟡 Intermediate: <b>🟡 Intermediate (Level 2) (13 Topics)</b></summary>
 
 | # | Topic / Concept | Level | Architectural Definition & Core Principle |
 |:---:|---|:---:|---|
@@ -366,7 +366,7 @@ Comprehensive technical interview guides and flashcard deck located under `inter
 </details>
 
 <details>
-<summary>&nbsp;&nbsp;&nbsp;&nbsp;🔴 Advanced: <b>🔴 Advanced (Level 300) (26 Topics)</b></summary>
+<summary>&nbsp;&nbsp;&nbsp;&nbsp;🔴 Advanced: <b>🔴 Advanced (Level 3) (26 Topics)</b></summary>
 
 | # | Topic / Concept | Level | Architectural Definition & Core Principle |
 |:---:|---|:---:|---|
@@ -400,7 +400,7 @@ Comprehensive technical interview guides and flashcard deck located under `inter
 </details>
 
 <details>
-<summary>&nbsp;&nbsp;&nbsp;&nbsp;🟣 Architect: <b>🟣 Staff Architect (Level 400) (9 Topics)</b></summary>
+<summary>&nbsp;&nbsp;&nbsp;&nbsp;🟣 Architect: <b>🟣 Staff Architect (Level 4) (9 Topics)</b></summary>
 
 | # | Topic / Concept | Level | Architectural Definition & Core Principle |
 |:---:|---|:---:|---|
@@ -427,7 +427,7 @@ Comprehensive technical interview guides and flashcard deck located under `inter
 <summary>&nbsp;&nbsp;📂 <b>Section: Cloud Object Storage & Prefix Optimization (4 Topics)</b></summary>
 
 <details>
-<summary>&nbsp;&nbsp;&nbsp;&nbsp;🟢 Easy: <b>🟢 Easy (Level 100) (1 Topics)</b></summary>
+<summary>&nbsp;&nbsp;&nbsp;&nbsp;🟢 Easy: <b>🟢 Easy (Level 1) (1 Topics)</b></summary>
 
 | # | Topic / Concept | Level | Architectural Definition & Core Principle |
 |:---:|---|:---:|---|
@@ -436,7 +436,7 @@ Comprehensive technical interview guides and flashcard deck located under `inter
 </details>
 
 <details>
-<summary>&nbsp;&nbsp;&nbsp;&nbsp;🟡 Intermediate: <b>🟡 Intermediate (Level 200) (2 Topics)</b></summary>
+<summary>&nbsp;&nbsp;&nbsp;&nbsp;🟡 Intermediate: <b>🟡 Intermediate (Level 2) (2 Topics)</b></summary>
 
 | # | Topic / Concept | Level | Architectural Definition & Core Principle |
 |:---:|---|:---:|---|
@@ -446,7 +446,7 @@ Comprehensive technical interview guides and flashcard deck located under `inter
 </details>
 
 <details>
-<summary>&nbsp;&nbsp;&nbsp;&nbsp;🟣 Architect: <b>🟣 Staff Architect (Level 400) (1 Topics)</b></summary>
+<summary>&nbsp;&nbsp;&nbsp;&nbsp;🟣 Architect: <b>🟣 Staff Architect (Level 4) (1 Topics)</b></summary>
 
 | # | Topic / Concept | Level | Architectural Definition & Core Principle |
 |:---:|---|:---:|---|
@@ -460,7 +460,7 @@ Comprehensive technical interview guides and flashcard deck located under `inter
 <summary>&nbsp;&nbsp;📂 <b>Section: Columnar & Row Storage Formats (Parquet/ORC/Avro) (13 Topics)</b></summary>
 
 <details>
-<summary>&nbsp;&nbsp;&nbsp;&nbsp;🟢 Easy: <b>🟢 Easy (Level 100) (4 Topics)</b></summary>
+<summary>&nbsp;&nbsp;&nbsp;&nbsp;🟢 Easy: <b>🟢 Easy (Level 1) (4 Topics)</b></summary>
 
 | # | Topic / Concept | Level | Architectural Definition & Core Principle |
 |:---:|---|:---:|---|
@@ -472,7 +472,7 @@ Comprehensive technical interview guides and flashcard deck located under `inter
 </details>
 
 <details>
-<summary>&nbsp;&nbsp;&nbsp;&nbsp;🟡 Intermediate: <b>🟡 Intermediate (Level 200) (4 Topics)</b></summary>
+<summary>&nbsp;&nbsp;&nbsp;&nbsp;🟡 Intermediate: <b>🟡 Intermediate (Level 2) (4 Topics)</b></summary>
 
 | # | Topic / Concept | Level | Architectural Definition & Core Principle |
 |:---:|---|:---:|---|
@@ -484,7 +484,7 @@ Comprehensive technical interview guides and flashcard deck located under `inter
 </details>
 
 <details>
-<summary>&nbsp;&nbsp;&nbsp;&nbsp;🔴 Advanced: <b>🔴 Advanced (Level 300) (5 Topics)</b></summary>
+<summary>&nbsp;&nbsp;&nbsp;&nbsp;🔴 Advanced: <b>🔴 Advanced (Level 3) (5 Topics)</b></summary>
 
 | # | Topic / Concept | Level | Architectural Definition & Core Principle |
 |:---:|---|:---:|---|
@@ -502,7 +502,7 @@ Comprehensive technical interview guides and flashcard deck located under `inter
 <summary>&nbsp;&nbsp;📂 <b>Section: Storage Compaction, Pruning & Data Layout (38 Topics)</b></summary>
 
 <details>
-<summary>&nbsp;&nbsp;&nbsp;&nbsp;🟢 Easy: <b>🟢 Easy (Level 100) (5 Topics)</b></summary>
+<summary>&nbsp;&nbsp;&nbsp;&nbsp;🟢 Easy: <b>🟢 Easy (Level 1) (5 Topics)</b></summary>
 
 | # | Topic / Concept | Level | Architectural Definition & Core Principle |
 |:---:|---|:---:|---|
@@ -515,7 +515,7 @@ Comprehensive technical interview guides and flashcard deck located under `inter
 </details>
 
 <details>
-<summary>&nbsp;&nbsp;&nbsp;&nbsp;🟡 Intermediate: <b>🟡 Intermediate (Level 200) (16 Topics)</b></summary>
+<summary>&nbsp;&nbsp;&nbsp;&nbsp;🟡 Intermediate: <b>🟡 Intermediate (Level 2) (16 Topics)</b></summary>
 
 | # | Topic / Concept | Level | Architectural Definition & Core Principle |
 |:---:|---|:---:|---|
@@ -539,7 +539,7 @@ Comprehensive technical interview guides and flashcard deck located under `inter
 </details>
 
 <details>
-<summary>&nbsp;&nbsp;&nbsp;&nbsp;🔴 Advanced: <b>🔴 Advanced (Level 300) (10 Topics)</b></summary>
+<summary>&nbsp;&nbsp;&nbsp;&nbsp;🔴 Advanced: <b>🔴 Advanced (Level 3) (10 Topics)</b></summary>
 
 | # | Topic / Concept | Level | Architectural Definition & Core Principle |
 |:---:|---|:---:|---|
@@ -557,7 +557,7 @@ Comprehensive technical interview guides and flashcard deck located under `inter
 </details>
 
 <details>
-<summary>&nbsp;&nbsp;&nbsp;&nbsp;🟣 Architect: <b>🟣 Staff Architect (Level 400) (7 Topics)</b></summary>
+<summary>&nbsp;&nbsp;&nbsp;&nbsp;🟣 Architect: <b>🟣 Staff Architect (Level 4) (7 Topics)</b></summary>
 
 | # | Topic / Concept | Level | Architectural Definition & Core Principle |
 |:---:|---|:---:|---|
@@ -603,7 +603,7 @@ Distributed under the **[MIT License](LICENSE)**. Maintained with ❤️ by [San
 
 ## 🗺️ Interactive Curriculum Roadmap & Contributing
 
-- **[Interactive Roadmap & Checkbox Tracker](docs/ROADMAP.md)**: Track your personal progress across all 4 Mastery Tiers (`Level 100` to `Level 400`).
+- **[Interactive Roadmap & Checkbox Tracker](docs/ROADMAP.md)**: Track your personal progress across all 4 Mastery Tiers (`Level 1` to `Level 4`).
 - **[Curriculum Taxonomy & Standards](docs/TAXONOMY.md)**: Canonical controlled vocabulary, pillar mappings, and evidence standards.
 - **[Contributing Guidelines](CONTRIBUTING.md)**: Authoring standards enforcing the Code-Test-Doc Triad and Anti-Pattern comparisons.
 - **[Live Platform Hub](https://moderndataengineer.uk)**: Access the full 11,280+ record search engine, mindmaps, and vector PDF downloads.

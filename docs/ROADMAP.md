@@ -26,12 +26,12 @@ Progress: [ ] 0 / 21 Completed (0.0%)
 <summary><b>📂 Section: Architectures (4 Drills)</b> — <i>Click to expand</i></summary>
 
 <details>
-<summary>&nbsp;&nbsp;<b>🔴 Tier 4: Production Hardening & Staff Architecture (Level 400) (4 Drills)</b></summary>
+<summary>&nbsp;&nbsp;<b>🔴 Tier 4: Production Hardening & Staff Architecture (Level 4) (4 Drills)</b></summary>
 
-- [ ] `data-system-design-handbook-doc-01_storage_format_tradeoff_matrix_delta_iceberg_hudi` — [Architecture: 01 Storage Format Tradeoff Matrix Delta Iceberg Hudi](../architectures/01_storage_format_tradeoff_matrix_delta_iceberg_hudi.md) `L400`
-- [ ] `data-system-design-handbook-doc-02_data_mesh_domain_decomposition_and_contracts` — [Architecture: 02 Data Mesh Domain Decomposition And Contracts](../architectures/02_data_mesh_domain_decomposition_and_contracts.md) `L400`
-- [ ] `data-system-design-handbook-doc-03_global_active_active_lakehouse_replication` — [Architecture: 03 Global Active Active Lakehouse Replication](../architectures/03_global_active_active_lakehouse_replication.md) `L400`
-- [ ] `data-system-design-handbook-doc-04_zero_trust_enterprise_lakehouse_security` — [Architecture: 04 Zero Trust Enterprise Lakehouse Security](../architectures/04_zero_trust_enterprise_lakehouse_security.md) `L400`
+- [ ] `data-system-design-handbook-doc-01_storage_format_tradeoff_matrix_delta_iceberg_hudi` — [Architecture: 01 Storage Format Tradeoff Matrix Delta Iceberg Hudi](../architectures/01_storage_format_tradeoff_matrix_delta_iceberg_hudi.md) `L4`
+- [ ] `data-system-design-handbook-doc-02_data_mesh_domain_decomposition_and_contracts` — [Architecture: 02 Data Mesh Domain Decomposition And Contracts](../architectures/02_data_mesh_domain_decomposition_and_contracts.md) `L4`
+- [ ] `data-system-design-handbook-doc-03_global_active_active_lakehouse_replication` — [Architecture: 03 Global Active Active Lakehouse Replication](../architectures/03_global_active_active_lakehouse_replication.md) `L4`
+- [ ] `data-system-design-handbook-doc-04_zero_trust_enterprise_lakehouse_security` — [Architecture: 04 Zero Trust Enterprise Lakehouse Security](../architectures/04_zero_trust_enterprise_lakehouse_security.md) `L4`
 
 </details>
 
@@ -41,18 +41,18 @@ Progress: [ ] 0 / 21 Completed (0.0%)
 <summary><b>📂 Section: Modules (10 Drills)</b> — <i>Click to expand</i></summary>
 
 <details>
-<summary>&nbsp;&nbsp;<b>🟡 Tier 2: Core Mechanics & Implementation (Level 200) (10 Drills)</b></summary>
+<summary>&nbsp;&nbsp;<b>🟡 Tier 2: Core Mechanics & Implementation (Level 2) (10 Drills)</b></summary>
 
-- [ ] `data-system-design-handbook-01_lakehouse_and_medallion_architecture` — [Lakehouse And Medallion Architecture](../modules/01_lakehouse_and_medallion_architecture/README.md) `L200`
-- [ ] `data-system-design-handbook-02_table_format_tradeoff_matrix` — [Table Format Tradeoff Matrix](../modules/02_table_format_tradeoff_matrix/README.md) `L200`
-- [ ] `data-system-design-handbook-03_metadata_catalogs_and_federation` — [Metadata Catalogs And Federation](../modules/03_metadata_catalogs_and_federation/README.md) `L200`
-- [ ] `data-system-design-handbook-04_storage_optimization_and_clustering` — [Storage Optimization And Clustering](../modules/04_storage_optimization_and_clustering/README.md) `L200`
-- [ ] `data-system-design-handbook-05_high_throughput_batch_and_cdf` — [High Throughput Batch And Cdf](../modules/05_high_throughput_batch_and_cdf/README.md) `L200`
-- [ ] `data-system-design-handbook-06_realtime_event_driven_lakehouse` — [Realtime Event Driven Lakehouse](../modules/06_realtime_event_driven_lakehouse/README.md) `L200`
-- [ ] `data-system-design-handbook-07_data_mesh_domain_decomposition` — [Data Mesh Domain Decomposition](../modules/07_data_mesh_domain_decomposition/README.md) `L200`
-- [ ] `data-system-design-handbook-08_zero_trust_security_and_governance` — [Zero Trust Security And Governance](../modules/08_zero_trust_security_and_governance/README.md) `L200`
-- [ ] `data-system-design-handbook-09_multicloud_and_disaster_recovery` — [Multicloud And Disaster Recovery](../modules/09_multicloud_and_disaster_recovery/README.md) `L200`
-- [ ] `data-system-design-handbook-10_finops_and_cost_optimization` — [Finops And Cost Optimization](../modules/10_finops_and_cost_optimization/README.md) `L200`
+- [ ] `data-system-design-handbook-01_lakehouse_and_medallion_architecture` — [Lakehouse And Medallion Architecture](../modules/01_lakehouse_and_medallion_architecture/README.md) `L2`
+- [ ] `data-system-design-handbook-02_table_format_tradeoff_matrix` — [Table Format Tradeoff Matrix](../modules/02_table_format_tradeoff_matrix/README.md) `L2`
+- [ ] `data-system-design-handbook-03_metadata_catalogs_and_federation` — [Metadata Catalogs And Federation](../modules/03_metadata_catalogs_and_federation/README.md) `L2`
+- [ ] `data-system-design-handbook-04_storage_optimization_and_clustering` — [Storage Optimization And Clustering](../modules/04_storage_optimization_and_clustering/README.md) `L2`
+- [ ] `data-system-design-handbook-05_high_throughput_batch_and_cdf` — [High Throughput Batch And Cdf](../modules/05_high_throughput_batch_and_cdf/README.md) `L2`
+- [ ] `data-system-design-handbook-06_realtime_event_driven_lakehouse` — [Realtime Event Driven Lakehouse](../modules/06_realtime_event_driven_lakehouse/README.md) `L2`
+- [ ] `data-system-design-handbook-07_data_mesh_domain_decomposition` — [Data Mesh Domain Decomposition](../modules/07_data_mesh_domain_decomposition/README.md) `L2`
+- [ ] `data-system-design-handbook-08_zero_trust_security_and_governance` — [Zero Trust Security And Governance](../modules/08_zero_trust_security_and_governance/README.md) `L2`
+- [ ] `data-system-design-handbook-09_multicloud_and_disaster_recovery` — [Multicloud And Disaster Recovery](../modules/09_multicloud_and_disaster_recovery/README.md) `L2`
+- [ ] `data-system-design-handbook-10_finops_and_cost_optimization` — [Finops And Cost Optimization](../modules/10_finops_and_cost_optimization/README.md) `L2`
 
 </details>
 
@@ -62,14 +62,14 @@ Progress: [ ] 0 / 21 Completed (0.0%)
 <summary><b>📂 Section: Runbooks (6 Drills)</b> — <i>Click to expand</i></summary>
 
 <details>
-<summary>&nbsp;&nbsp;<b>🔴 Tier 4: Production Hardening & Staff Architecture (Level 400) (6 Drills)</b></summary>
+<summary>&nbsp;&nbsp;<b>🔴 Tier 4: Production Hardening & Staff Architecture (Level 4) (6 Drills)</b></summary>
 
-- [ ] `data-system-design-handbook-rb-01_cross_region_split_brain_conflict_resolution` — [Incident Runbook: Cross Region Split Brain Conflict Resolution](../runbooks/01_cross_region_split_brain_conflict_resolution.md) `L400`
-- [ ] `data-system-design-handbook-rb-02_table_format_metadata_explosion_triage` — [Incident Runbook: Table Format Metadata Explosion Triage](../runbooks/02_table_format_metadata_explosion_triage.md) `L400`
-- [ ] `data-system-design-handbook-rb-03_data_lineage_and_audit_compliance_failure` — [Incident Runbook: Data Lineage And Audit Compliance Failure](../runbooks/03_data_lineage_and_audit_compliance_failure.md) `L400`
-- [ ] `data-system-design-handbook-rb-04_multitenant_noisy_neighbor_starvation` — [Incident Runbook: Multitenant Noisy Neighbor Starvation](../runbooks/04_multitenant_noisy_neighbor_starvation.md) `L400`
-- [ ] `data-system-design-handbook-rb-05_lakehouse_catalog_lockout_and_disaster_recovery` — [Incident Runbook: Lakehouse Catalog Lockout And Disaster Recovery](../runbooks/05_lakehouse_catalog_lockout_and_disaster_recovery.md) `L400`
-- [ ] `data-system-design-handbook-rb-06_zero_trust_credential_leak_quarantine` — [Incident Runbook: Zero Trust Credential Leak Quarantine](../runbooks/06_zero_trust_credential_leak_quarantine.md) `L400`
+- [ ] `data-system-design-handbook-rb-01_cross_region_split_brain_conflict_resolution` — [Incident Runbook: Cross Region Split Brain Conflict Resolution](../runbooks/01_cross_region_split_brain_conflict_resolution.md) `L4`
+- [ ] `data-system-design-handbook-rb-02_table_format_metadata_explosion_triage` — [Incident Runbook: Table Format Metadata Explosion Triage](../runbooks/02_table_format_metadata_explosion_triage.md) `L4`
+- [ ] `data-system-design-handbook-rb-03_data_lineage_and_audit_compliance_failure` — [Incident Runbook: Data Lineage And Audit Compliance Failure](../runbooks/03_data_lineage_and_audit_compliance_failure.md) `L4`
+- [ ] `data-system-design-handbook-rb-04_multitenant_noisy_neighbor_starvation` — [Incident Runbook: Multitenant Noisy Neighbor Starvation](../runbooks/04_multitenant_noisy_neighbor_starvation.md) `L4`
+- [ ] `data-system-design-handbook-rb-05_lakehouse_catalog_lockout_and_disaster_recovery` — [Incident Runbook: Lakehouse Catalog Lockout And Disaster Recovery](../runbooks/05_lakehouse_catalog_lockout_and_disaster_recovery.md) `L4`
+- [ ] `data-system-design-handbook-rb-06_zero_trust_credential_leak_quarantine` — [Incident Runbook: Zero Trust Credential Leak Quarantine](../runbooks/06_zero_trust_credential_leak_quarantine.md) `L4`
 
 </details>
 
@@ -79,9 +79,9 @@ Progress: [ ] 0 / 21 Completed (0.0%)
 <summary><b>📂 Section: Topics (1 Drills)</b> — <i>Click to expand</i></summary>
 
 <details>
-<summary>&nbsp;&nbsp;<b>🟡 Tier 2: Core Mechanics & Implementation (Level 200) (1 Drills)</b></summary>
+<summary>&nbsp;&nbsp;<b>🟡 Tier 2: Core Mechanics & Implementation (Level 2) (1 Drills)</b></summary>
 
-- [ ] `data-system-design-handbook-curriculum-topics` — [Topics Directory: System Design Handbook](../topics/README.md) `L200`
+- [ ] `data-system-design-handbook-curriculum-topics` — [Topics Directory: System Design Handbook](../topics/README.md) `L2`
 
 </details>
 
